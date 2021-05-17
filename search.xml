@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title>test</title>
-      <link href="2021/05/13/test/"/>
-      <url>2021/05/13/test/</url>
-      
-        <content type="html"><![CDATA[<pre class=" language-c++"><code class="language-c++">  #include<iostream>  using namespace std;    int main()  {      cout <<"hello world"<< endl;      system("pause");      return 0;  }</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>菜鸟程序员内功心法--C++</title>
       <link href="2021/05/11/c-xue-xi-1.0-chu-ji-bian-cheng/"/>
       <url>2021/05/11/c-xue-xi-1.0-chu-ji-bian-cheng/</url>
