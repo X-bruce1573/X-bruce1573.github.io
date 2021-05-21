@@ -517,23 +517,23 @@
 </ul>
 <ul>
 <li><p>下载安装编译器，我这里使用的是ming-w64 ，ming-w64下载（c++的工具包） 官方：<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/">https://sourceforge.net/projects/mingw-w64/</a></p>
-<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/1.png" class>
+<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/1.png" class="">
 
 <p>==一定要下载该版本，否则没有bin文件，亲测==</p>
-<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/2.png" class>
+<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/2.png" class="">
 
 <p>==路径是不可以有中文或空格的，可能会导致gdb无法正常工作没有办法debug放不了断点什么的了==</p>
 <p>下载好VS Code之后需要把bin文件的路径添加到系统的PATH里面</p>
-<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/3.png" class>
+<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/3.png" class="">
 
 <p>配置好之后输入cmd，输入 gcc -v 查看gcc版本即可如下图</p>
-<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/4.png" class></li>
+<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/4.png" class=""></li>
 </ul>
 <h3 id="2、安装VS-Code插件"><a href="#2、安装VS-Code插件" class="headerlink" title="2、安装VS Code插件"></a>2、安装VS Code插件</h3><ul>
 <li><p>下载安装完之后，VS Code是空的，打开VS Code装几个插件，你需要什么功能就去下载什么功能，可以理解为手机里的应用商店。</p>
-<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/5.png" class>
+<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/5.png" class="">
 
-<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/6.png" class></li>
+<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/6.png" class=""></li>
 </ul>
 <ul>
 <li>输入需要下载的插件，比如安装C/C++ ,Code  Runner就可以意见运行程序了，可以选择性的添加想要的插件</li>
@@ -541,25 +541,25 @@
 <h3 id="3、运行调试程序，配置文件"><a href="#3、运行调试程序，配置文件" class="headerlink" title="3、运行调试程序，配置文件"></a>3、运行调试程序，配置文件</h3><ul>
 <li><p>接下来新建一个我们代码存放的文件夹（电脑上习惯的位置）用于存放代码，接下来配置好的调试环境，进队存放在这一个文件夹及文件夹的子目录里的程序作用</p>
 <p>上面就是我在电脑里创建的一个用于存放.cpp文件的文件夹</p>
-<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/7.png" class></li>
+<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/7.png" class=""></li>
 <li><p>接下来配置文件让程序编译起来，在文件夹下新建.VS Code文件夹并新建两个<code>json</code>文件分别是<code>launch.json</code> 和<code>task.json </code></p>
 <ul>
 <li><code>launch.json</code> 配置启动的一些参数</li>
 <li><code>task.json</code> 配置编译器的相关参数  可以用最新的c++编译器</li>
 </ul>
-<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/8.png" class>
+<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/8.png" class="">
 
-<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/9.png" class></li>
+<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/9.png" class=""></li>
 </ul>
 <p><code> "externalConsole": false,</code> <em>// 为true时使用单独的cmd窗口，与其它IDE一致；18年10月后设为false可调用VSC内置终端</em></p>
 <p>  另外<code>shift +alt+f</code>   自动整理代码 （非常好用，强推）</p>
 <h3 id="4、头文件报错怎么办"><a href="#4、头文件报错怎么办" class="headerlink" title="4、头文件报错怎么办"></a>4、头文件报错怎么办</h3><p>也就是我遇到的最头疼的问题，在我们VS Code代码写了一大半回过头时，就会发现</p>
-<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/10.png" class>
+<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/10.png" class="">
 
 <p>what?库函数都找不到？这个问题也是纠缠我时间最长的问题，很多资料帖子都没有写的很清楚，但我认为应该是很多人遇到的问题吧。</p>
 <p>经过不断查找、询问、试错之后我发现，VS Code找不到都文件的问题是由于windows下VS Code默认的编译器是微软的MSVC(Microsoft Visual Studio使用的编译器）的头文件路径，如果没有安装Microsoft Visual Studio肯定会因为炸不到头文件而报错的，所有我们要手动修改配置。</p>
 <p>ctrl +shift +p ,”C/Cpp:Edit configurations”,生成c_cpp_properties.json文件如图，在这个文件里需要修改基础，如includePath和compilerPath：</p>
-<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/11.png" class>
+<img src="/2021/05/10/ji-yu-vscode-da-jian-qing-liang-bian-jie-de-c-kai-fa-huan-jing/11.png" class="">
 
 <p>还要想添加其他的库，都可以用这样的方式进行添加，上面的配置完成之后，再回到你创建的.cpp文件，你就会发现不会报错了</p>
 <blockquote>
