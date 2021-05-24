@@ -4,13 +4,25 @@
   
     
     <entry>
-      <title>test</title>
-      <link href="2021/05/21/test/"/>
-      <url>2021/05/21/test/</url>
+      <title>Ubuntu虚拟机的网络连接解决方案</title>
+      <link href="2021/05/24/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/"/>
+      <url>2021/05/24/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/</url>
       
-        <content type="html"><![CDATA[<img src="/2021/05/21/test/1.png" class="">]]></content>
+        <content type="html"><![CDATA[<blockquote><p>今天准备使用虚拟机，突然发现连不上网了<span class="github-emoji"><span>🙉</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f649.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，之前天真的以为是自动连接的<span class="github-emoji"><span>😕</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f615.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，Ubuntu界面上的wify标志也没了，今天还有资源包需要安装使用，不由的一阵头皮发麻，后来在网上找了好多方法，最终才把它弄好<span class="github-emoji"><span>🙏</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f64f.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，小问题耽搁了不少时间，鉴于此记录下解决方案，供粗心的路人少踩坑<span class="github-emoji"><span>🆘</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f198.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p></blockquote><p>首先，点击下面这个编辑选项</p><img src="/2021/05/24/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/1.png" class=""><p>选择虚拟网络编辑器，选择桥接模式，并且选择带有<code>Wireless-AC</code>的（如果是用Wifi的话）。</p><img src="/2021/05/24/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/2.png" class=""><p>然后打开自己电脑的网络连接</p><img src="/2021/05/24/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/3.png" class=""><p>找到带有VMware字样的（我改了第一个就成功了）</p><img src="/2021/05/24/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/4.png" class=""><p>右击属性，选择设置</p><img src="/2021/05/24/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/5.png" class=""><p>选择自动获取ip地址</p><img src="/2021/05/24/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/6.png" class=""><p>打开虚拟机，更改为net模式</p><img src="/2021/05/24/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/7.png" class=""><p>==如果wify图表消失的话，可以按下列操作==</p><pre class=" language-c++"><code class="language-c++">sudo service network-manager stopsudo rm /var/lib/NetworkManager/NetworkManager.statesudo service network-manager start</code></pre><p>再将网络适配器改成桥接模式或者NAT模式再输入</p><p><code>sudo service network-manager start</code></p><p>之后就连上网络啦！！！</p><img src="/2021/05/24/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/8.png" class="">]]></content>
       
       
+      <categories>
+          
+          <category> 解决方案 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Ubuntu </tag>
+            
+        </tags>
       
     </entry>
     
