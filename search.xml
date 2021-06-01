@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>用UltraISO制作Ubuntu_18.04U盘启动盘</title>
+      <link href="2021/06/01/yong-ultraiso-zhi-zuo-ubuntu-18-04u-pan-qi-dong-pan/"/>
+      <url>2021/06/01/yong-ultraiso-zhi-zuo-ubuntu-18-04u-pan-qi-dong-pan/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>作为菜鸟程序员的我在学习linux的道路上一直都在用虚拟机运行Ubuntu操作系统，然而对于想要极致发挥linux性能，体验linux无穷魅力的同学来说，PC端的linux操作系统当然是不二选择啦，于是乎，我们需要迈出第一步，制作一个自己的Ubuntu U盘启动盘，开始吧  go  go   go !</p></blockquote><ul><li><p>制作工具：UltraISO（百度直搜既可，下载最新版）</p></li><li><p>linux版本：Ubuntu_18.04 （现阶段个人认为较为稳定的版本）</p></li><li><p>U盘：不小于1G</p></li></ul><p>​     首先,从Ubuntu官网<code>http://cn.ubuntu.com/download/</code>下载系统的iso文件 用来制作的U盘需要是FAT32格式的，可以通过格式化U盘更改（注意，如果U盘已经写入过隐藏分区了，需要在磁盘管理里面删除相关隐藏分区然后合并为一个大分区后格式化为FAT32）</p><img src="/2021/06/01/yong-ultraiso-zhi-zuo-ubuntu-18-04u-pan-qi-dong-pan/1.png" class><p>接下来从网上下载新版UltraISO软件安装</p><img src="/2021/06/01/yong-ultraiso-zhi-zuo-ubuntu-18-04u-pan-qi-dong-pan/2.png" class><p>打开软件后点击下图中红色划线标识按钮（如果ISO文件是默认用UltraISO打开也可以直接双击iso文件打开），找到Ubuntu ISO文件所在文件夹，选中并点击打开</p><img src="/2021/06/01/yong-ultraiso-zhi-zuo-ubuntu-18-04u-pan-qi-dong-pan/3.png" class><p>打开后的界面为：</p><img src="/2021/06/01/yong-ultraiso-zhi-zuo-ubuntu-18-04u-pan-qi-dong-pan/4.png" class><p>点击 “启动→写入硬盘映像…”</p><img src="/2021/06/01/yong-ultraiso-zhi-zuo-ubuntu-18-04u-pan-qi-dong-pan/5.png" class><p>写入方式选择USB-HDD+或者USB-HDD均可（一般用HDD+）【隐藏启动分区最好选择无，省的以后格式化麻烦】【刻录校验可要可不要】</p><p>点击 “便捷启动→写入新的驱动器引导扇区→Syslinux”【这一步的作用是让开机启动时能够以U盘启动 Linux安装系统，否则U盘就相当于是存了数据而不是启动盘】</p><img src="/2021/06/01/yong-ultraiso-zhi-zuo-ubuntu-18-04u-pan-qi-dong-pan/6.png" class><p>点击确定，提示成功</p><img src="/2021/06/01/yong-ultraiso-zhi-zuo-ubuntu-18-04u-pan-qi-dong-pan/7.png" class><p>点击写入，选择“是”</p><img src="/2021/06/01/yong-ultraiso-zhi-zuo-ubuntu-18-04u-pan-qi-dong-pan/8.png" class><p>写入需要等待一段时间  完成后即可，最后我们可以查看</p><img src="/2021/06/01/yong-ultraiso-zhi-zuo-ubuntu-18-04u-pan-qi-dong-pan/9.png" class><p>至此，我们的Ubuntu U盘启动盘就已经制作完毕，插入主机，进入bois选择U盘启动正常安装即可</p><p>是不是很简单哈  ，大家赶紧来试试吧！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Ubuntu_18.04 </tag>
+            
+            <tag> UltraISO </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ubuntu虚拟机的网络连接解决方案</title>
       <link href="2021/05/24/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/"/>
       <url>2021/05/24/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/</url>
