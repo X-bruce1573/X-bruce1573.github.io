@@ -1,0 +1,5391 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="菜鸟程序员内功心法--C++（核心编程）, xuyanbo,github">
+    <meta name="description" content="举个栗子">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>菜鸟程序员内功心法--C++（核心编程） | XuYanBo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">XuYanBo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">XuYanBo</div>
+        <div class="logo-desc">
+            
+            举个栗子
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/X-bruce1573" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/X-bruce1573" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">菜鸟程序员内功心法--C++（核心编程）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
+                            </a>
+                        
+                            <a href="/tags/markdown/">
+                                <span class="chip bg-color">markdown</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
+                                编程语言
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-06-25
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    712
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    2 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="C-学习-2-0-核心编程"><a href="#C-学习-2-0-核心编程" class="headerlink" title="C++学习-2.0_核心编程"></a>C++学习-2.0_核心编程</h1><p>主要针对面向对象编程技术，学习C++中的核心和精髓</p>
+<h2 id="一、内存分区模型"><a href="#一、内存分区模型" class="headerlink" title="一、内存分区模型"></a>一、内存分区模型</h2><p>C++程序执行时，将内存大方向划分讷维4个区域</p>
+<ul>
+<li><p>代码区：存放函数体的二进制代码，由操作系统进行管理的</p>
+</li>
+<li><p>全局区：存放全局变量和静态变量一级常量</p>
+</li>
+<li><p>栈区：由编译器自动分配释放，存放函数的参数值，局部变量等</p>
+</li>
+<li><p>堆区：由程序员分配和释放，若程序员不释放，释放结束时由操作系统收回</p>
+</li>
+</ul>
+<p>内存四区意义：</p>
+<ul>
+<li>不同区域存放的数据，赋予不同的生命周期，给我们更大的灵活编程</li>
+</ul>
+<h3 id="1-1-程序运行前"><a href="#1-1-程序运行前" class="headerlink" title="1.1 程序运行前"></a>1.1 程序运行前</h3><p>在程序编译后，生成了可执行程序<code>.exe</code>，分为两个区域</p>
+<p><strong>代码区</strong>：</p>
+<ul>
+<li><p>存放CPU执行的机器指令</p>
+</li>
+<li><p>代码区是共享的，共享的目的是在于对频繁被执行的程序，只需要在内存中有一份代码即可</p>
+</li>
+<li><p>代码区是只读的，使其只读的原因是防止程序意外的修改了它的指令</p>
+</li>
+</ul>
+<p><strong>全局区</strong>：</p>
+<ul>
+<li><p>全局变量和静态变量存放在此</p>
+</li>
+<li><p>全局区还包含了常量区，字符串常量和其他常量也存放在此</p>
+<p>==该区域的数据在程序结束后由操作系统释放==</p>
+</li>
+</ul>
+<p>==只要是局部变量（包含局部变量和*const修饰的局部变量)，都存放在局部区==</p>
+<p>==全局变量、静态变量都存放在全局区，常量（包含字符串常量、<em>const修饰的变量</em>）离全局区很近==</p>
+<ul>
+<li>全局变量</li>
+<li>静态变量</li>
+<li>常量（<em>字符串常量</em>、<code>*const</code>修饰的变量<em>（<code>*const</code>修饰的全局变量</em>（全局常量）、<code>*const</code>修饰的局部变量*））</li>
+<li>全局区（全局变量、静态变量、常量）</li>
+<li>局部区（局部变量、<code>const</code>修饰的局部变量(局部常量））</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+ //全局变量
+int g_a = 10;
+int g_b = 10;
+
+//const修饰的全局变量叫全局常量
+const int c_g_a = 10;
+
+int main()
+{
+    //全局区
+
+    //全局变量、静态变量、常量
+
+    //创建一个普通的局部变量
+    int a = 10;
+    int b = 10;
+    cout << "局部变量a的地址为：" << (long long)&a << endl;
+    cout << "局部变量a的地址为：" << (long long)&b << endl; 
+
+    cout << "全局变量g_a的地址为：" << (long long)&g_a << endl;
+    cout << "全局变量g_b的地址为：" << (long long)&g_b << endl; 
+
+    //静态变量   在普通变量前面夹static,属于静态变量  放在全局区
+    static int s_a = 10;
+    static int s_b = 10;
+    cout << "静态变量s_b的地址为：" << (long long)&s_b << endl; 
+    cout << "静态变量s_b的地址为：" << (long long)&s_b << endl; 
+
+    //常量
+    //字符串常量(只要是双引号引起来的都叫字符串常量)
+    cout << "字符串常量的地址为：" << (long long)&"hello"<<endl;
+    //const修饰的变量
+    //const修饰的全局变量
+    cout << "全局常量c_g_a的地址为：" << (long long)&c_g_a << endl;
+    //const修饰的局部变量（局部常量）
+    const int c_L_a = 10; //c-const    g-global    l-local
+    cout << "const修饰的局部变量c_L_a的地址为：" << (long long)&c_L_a << endl;
+    system("pause");
+    return 0;
+}
+
+
+局部变量a的地址为：6487572
+局部变量a的地址为：6487576
+全局变量g_a的地址为：4206616
+全局变量g_b的地址为：4206612
+静态变量s_b的地址为：4206608
+静态变量s_b的地址为：4206608
+字符串常量的地址为：4210795
+全局常量c_g_a的地址为：4210876
+const修饰的局部变量c_L_a的地址为：6487580
+</code></pre>
+<p>总结：</p>
+<ul>
+<li>C++中在程序运行前分为全局区和代码区</li>
+<li>代码区的特点是共享和只读</li>
+<li>全局区中存放全局变量、静态变量、常量</li>
+<li>常量区中存放字符串常量和<code>const</code>修饰的全局变量(全局常量)</li>
+</ul>
+<h3 id="1-2-程序运行后"><a href="#1-2-程序运行后" class="headerlink" title="1.2 程序运行后"></a>1.2 程序运行后</h3><p><strong>栈区</strong>：</p>
+<p>由编译器自动分配释放，存放函数的参数值，局部变量等</p>
+<p>notice:不要返回局部变量的地址，栈区开辟的数据由编译器自动释放</p>
+<ul>
+<li>局部变量 （函数内的变量）存放在栈区，==栈区的数据在函数执行完后自动释放了==</li>
+<li>形参数据也会放在栈区</li>
+<li>不要返回局部变量的地址，你没有权限了</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+
+//栈区数据的注意事项 ---不要返回局部变量的地址
+//扎努的数据由编译器管理开辟和释放
+
+int *func() //形参数据也会放在栈区
+{
+
+    int a = 10; //局部变量  存放在栈区，栈区的数据在函数执行完后自动释放了
+    return &a;  //返回局部变量的地址
+}
+
+int main()
+{
+    //接受func函数的返回值
+    int *p = func();
+    cout << *p << endl; //第一次可以打印正确数字，是因为编译器做了保留
+    cout << *p << endl; //第二次这个数据就不再保留了、内存不属于你了
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<p><strong>堆区</strong>：</p>
+<ul>
+<li>由程序员释放，若程序员不释放，程序结束后由操作系统回收 </li>
+<li>在C++中主要利用new在堆区开辟内存（是个地址）</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+
+//P本身在栈区，但是P指向了堆区的地址，并且这个指向的地址被函数返回了，
+//接受这个返回值的指针变量也指向了堆区
+//P被释放了没有关系，但是NEW int(10)没有，所有根据P传回来的地址能找到10
+//10保存在了堆区，所以程序调用结束后并没有被释放
+int *func()
+{
+    //利用new关键字   可以将数据开辟到堆区
+    //指针  本质上也是局部变量，放在栈上，指针保存的数据是放在堆区
+
+    int *p = new int(10); //这玩意儿是个地址，要记住
+    return p;
+}
+//func函数中的P和main函数中的p不一样，func中的指针释放前把他的地址传给了
+int main()
+{
+
+    //在堆区开辟数据
+    int *p = func();
+    cout << *p << endl;
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h3 id="1-3-new操作符"><a href="#1-3-new操作符" class="headerlink" title="1.3 new操作符"></a>1.3 new操作符</h3><p>C++中利用new操作符在堆区中开辟数据</p>
+<p>堆区开辟的数据，由程序员手动开辟，手动释放，释放利用操作符delete</p>
+<p><code>new 数据类型</code>  利用new创建的数据，会返回该数据对应的类型的指针</p>
+<p><strong>局部变量由编译器自动释放，释放的时机是子函数调用结束</strong></p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+//1、new的基本语法
+int *func()
+{
+    //在堆区创建数据
+    //new 返回的是  该数据类型的指针
+    int *p = new int(10);
+    return p;
+}
+
+void test01()
+{
+    int *p = func();
+    cout << *p << endl;
+    cout << *p << endl;
+    //堆区的数据由程序员管理释放，
+    //想释放yong delete
+    delete p;
+    // cout << *p << endl;//内存已经被释放了
+}
+//2、在堆区中利用new开辟数组
+void test02()
+{
+    //在堆区创建10整形数据的数组
+    int *arr = new int[10]; //10代表数组中由10个元素
+    for (int i = 0; i < 10; i++)
+    {
+        arr[i] = i + 10;//arr[i]=*(arr+i)
+    }
+    for (int i = 0; i < 10; i++)
+    {
+        cout << arr[i] << endl;
+    }
+    //释放堆区数组
+    //释放数组时，要加[]才可以
+    delete[] arr;
+}
+int main()
+    {
+        //test01();
+        test02();
+     
+        system("pause");
+        return 0;
+    }
+</code></pre>
+<h2 id="二、引用"><a href="#二、引用" class="headerlink" title="二、引用"></a>二、引用</h2><h3 id="2-1-引用的基本使用"><a href="#2-1-引用的基本使用" class="headerlink" title="2.1 引用的基本使用"></a>2.1 引用的基本使用</h3><p>给变量起别名</p>
+<p>语法：<code>数据类型 &amp;别名 = 原名</code></p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    //引用的基本语法
+    //数据类型   &别名 = 原名
+    int a = 10;
+    int &b = a;
+    cout << "a=:" << a << endl;
+    cout << "b=:" << b << endl;
+    cout << "a的地址为：" << (long long)&a << endl;
+    cout << "b的地址为：" << (long long)&b << endl;
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h3 id="2-2-引用的注意事项"><a href="#2-2-引用的注意事项" class="headerlink" title="2.2 引用的注意事项"></a>2.2 引用的注意事项</h3><ul>
+<li><p>引用必须初始化</p>
+</li>
+<li><p>引用在初始化后，不可以改变</p>
+</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    int a = 10;
+    
+    //1、引用必须初始化
+  //  int &b;//错误  ，必须初始化
+    int &b = a;
+
+    //2、引用一旦初始化就不可以改变了
+    int c = 20;
+    b = c;//赋值操作，而不是更改引用
+    cout << "a=: " << a << endl;
+    cout << "b=: " << b << endl;
+    cout << "c=: " << c << endl;
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h3 id="2-3-引用做函数参数"><a href="#2-3-引用做函数参数" class="headerlink" title="2.3 引用做函数参数"></a>2.3 引用做函数参数</h3><p>作用：函数传参时，可以利用引用的技术让形参修饰实参</p>
+<p>优点：可以简化指针修改实参</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+
+//交换函数
+
+//1、值传递
+void test1(int a, int b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+    cout << "a=:" << a << endl;
+    cout << "b=:" << b << endl;
+}
+//2、地址传递
+void test2(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+//3、引用的方式传递
+void test3(int &a, int &b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main()
+{
+    int a = 20;
+    int b = 30;
+    //test1(a, b);//值传递，形参不会修饰实参
+    //test2(&a,&b);//地址传递，形参会修饰实参
+    test3(a, b); //引用传递也会修饰实参
+    cout << "a=:" << a << endl;
+    cout << "b=:" << b << endl;
+    system("pause");
+    return 0;
+}
+</code></pre>
+<p>总结：通过引用参数产生的效果同按地址传递是一样的，引用的方法更清楚简单</p>
+<h3 id="2-4-引用做函数返回值"><a href="#2-4-引用做函数返回值" class="headerlink" title="2.4 引用做函数返回值"></a>2.4 引用做函数返回值</h3><p>引用是可以做为函数返回值存在的</p>
+<p>注：不要返回局部变量引用</p>
+<p>用法：函数调用作为左值</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+//引用做函数返回值
+//1、不要返回局部变量引用
+
+int &test01()
+{
+
+    int a = 10; //局部变量存放在四区的栈区
+    return a;
+}
+//2、函数的调用可以作为左值
+int &test02()
+{
+
+    static int a = 10; //静态变量，存放在全局区，全局区上的数据在程序结束后系统释放
+    return a;
+}
+
+//函数调用作为左值
+
+int main()
+{
+    int &ref2 = test02();
+    cout << "ref2:" << ref2 << endl;
+    cout << "ref2:" << ref2 << endl;
+    test02() = 1000; //如果函数的返回值是引用，这个函数调用可以作为左值
+    cout << "ref2:" << ref2 << endl;
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h3 id="2-5-引用的本质"><a href="#2-5-引用的本质" class="headerlink" title="2.5 引用的本质"></a>2.5 引用的本质</h3><ul>
+<li>引用的本质是在C++内部的实现就是一个指针常量（==指针指向不可以修改，也就是说明为什么引用不能修改==）、</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+//发现是引用，转换为 int * const ref = &a;
+void func(int &ref)
+{
+
+    ref = 100; // ref是引用，转换为*ref = 100;
+}
+
+int main()
+{
+
+    int a = 10;
+    //自动转换为 int * const ref = &a;指针常量是指针指向不可以修改，也就是说明为什么引用不能修改
+    int &ref = a;
+    ref = 20; //内部发现ref是引用，自动转换为：*ref = 20
+    cout << "a = :" << a << endl;
+    cout << "ref = :" << ref << endl; //帮着解引用了*ref
+    system("pause");
+    return 0;
+}
+</code></pre>
+<ul>
+<li>C++推荐引用，因为语法方便，引用的本质是==指针常量==，但是所有的指针操作编译器都帮我们做了</li>
+</ul>
+<h3 id="2-6-常量引用"><a href="#2-6-常量引用" class="headerlink" title="2.6 常量引用"></a>2.6 常量引用</h3><p>常量引用主要用来修饰形参，防止误操作</p>
+<p>在函数形参列表中，可以加<code>const</code>修饰形参，防止形参改变实参</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+
+void showValue(const int &val)
+{
+    //val = 30;//加入const 之后，就不可以修改了
+
+    cout << "val = " << val << endl;
+
+
+}
+
+int main()
+{
+
+    //常量引用
+    //使用场景，用来修饰形参，防止误操作
+
+    //int a = 10;
+    //int &b = 10; //引用必须引一块合法的内存空间
+    //加上const之后，比那一起将代码修改为：int temp = 10;const int &b = temp
+    //const int &b = 10;
+   // b = 20;//加入const之后变为只读，不可以修改
+    int a = 100;
+    showValue(a);
+    cout << "a = " << a << endl;
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h2 id="三、函数提高"><a href="#三、函数提高" class="headerlink" title="三、函数提高"></a>三、函数提高</h2><h3 id="3-1-函数默认参数"><a href="#3-1-函数默认参数" class="headerlink" title="3.1 函数默认参数"></a>3.1 函数默认参数</h3><p>在C++中，函数的形参列表中的形参是可以有默认值的</p>
+<p>语法：<code>返回值类型   函数名   （参数 = 默认值）{}</code></p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+
+//函数的默认参数
+//如果我们传了数据，就用自己的数据，如果没有，那么用默认值
+//语法：返回值类型  函数名（形参 = 默认值）{}
+int add(int a, int b = 20, int c = 30)
+{
+
+    return a + b + c;
+}
+
+//注意
+//1、如果某个位置已经有了默认参数，那么从这个值往后，从左到右都必须有默认值
+//2、如果函数的声明有了默认参数，那么函数的实现就不能有默认参数
+//声明和实现只能有一个默认参数
+int fun(int a = 10, int b = 20); //声明
+int fun(int a, int b)            //实现
+{
+    return a + b;
+}
+int main()
+{
+
+    cout << fun(1, 2) << endl;
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h3 id="3-2-函数占位参数"><a href="#3-2-函数占位参数" class="headerlink" title="3.2 函数占位参数"></a>3.2 函数占位参数</h3><p>C++中函数的形参列表里可以有占位参数，用来占位，调用函数时必须填补该位置</p>
+<p>语法：<code>返回值类型   函数名  （数据类型）{}</code></p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+
+//占位参数
+//返回值类型 函数名（数据类型）{}
+void fun(int a, int) //占了个位置
+{
+
+    cout << "hello" << endl;
+}
+
+int main()
+{
+    fun(1, 1);
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h3 id="3-3-函数重载"><a href="#3-3-函数重载" class="headerlink" title="3.3 函数重载"></a>3.3 函数重载</h3><h4 id="3-3-1-函数重载概述"><a href="#3-3-1-函数重载概述" class="headerlink" title="3.3.1 函数重载概述"></a>3.3.1 函数重载概述</h4><p>函数命名可以相同，提高复用性</p>
+<p>函数重载满足条件：</p>
+<ul>
+<li><p>同一个作用域下</p>
+</li>
+<li><p>函数名称相同</p>
+</li>
+<li><p>函数参数类型不同或者个数不同或顺序不同</p>
+</li>
+</ul>
+<p>注;函数的返回值不可以作为函数重载的条件</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+//函数重载
+//可以让函数名相同，提高复用性
+//函数重载满足条件
+//1、同一个作用域下（不在main()函数里面，都是全局作用域）
+//2、函数名相同
+//3、函数参数类型不同或个数顺序不同
+void fun()
+{
+    cout << "这是fun()" << endl;
+}
+void fun(int a)
+{
+    cout << "这是fun(int a)" << endl;
+}
+void fun(double a,int b)
+{
+    cout << "这是fun(double a,int b)" << endl;
+}
+void fun(int a,double b)
+{
+    cout << "这是fun(int a,double b)" << endl;
+}
+
+int main()
+{
+    fun(2.14,3);
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="3-3-2-函数重载注意事项"><a href="#3-3-2-函数重载注意事项" class="headerlink" title="3.3.2 函数重载注意事项"></a>3.3.2 函数重载注意事项</h4><ul>
+<li><p>引用作为重载条件</p>
+</li>
+<li><p>函数重载碰到函数默认参数</p>
+</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+
+//函数重载的注意事项
+//1、引用作为重载的条件
+void fun(int &a)
+{
+
+    cout << "fun()调用" << endl;
+}
+void fun(const int &a) //只读//const int &a = 10
+{
+
+    cout << "fun(const int &a)调用" << endl;
+}
+//2、函数重载碰到默认参数
+void func(int a, int b = 10)
+{
+
+    cout << "fun（int a,int b = 10）" << endl;
+}
+void func(int a)
+{
+
+    cout << "func（int a）" << endl;
+}
+
+int main()
+{
+    // int a = 10;
+    // fun(a);调用无const
+    //fun(10);调用有const
+    //func(10);//当函数重载碰到默认参数，出现二义性，报错，尽量避免这种情况
+    func(10, 20);
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h2 id="四、类和对象"><a href="#四、类和对象" class="headerlink" title="四、类和对象"></a>四、类和对象</h2><p>C++面向对象的三大特性为：==封装、继承、多态==</p>
+<p>C++认为==万事万物都皆为对象==，对象上有其属性和行为</p>
+<p>具有相同性质的对象，我们可以抽象为类，人属于人类，车属于车类</p>
+<h3 id="4-1-封装"><a href="#4-1-封装" class="headerlink" title="4.1 封装"></a>4.1 封装</h3><h4 id="4-1-1-封装的定义"><a href="#4-1-1-封装的定义" class="headerlink" title="4.1.1 封装的定义"></a>4.1.1 封装的定义</h4><p>封装时C++面向对象三大特性之一</p>
+<p>意义：</p>
+<ul>
+<li><p>将属性和行为作为一个整体，表现生活中的事物</p>
+</li>
+<li><p>将属性和行为加以权限控制</p>
+</li>
+</ul>
+<p>封装意义：</p>
+<p>​    在设计类的时候，属性和行为写在一起，表现事物</p>
+<p>语法：<code>class 类名{  访问权限：属性/行为 }；</code></p>
+<p>设计一个圆类，求圆的周长</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+const double pi = 3.14; //最好用const 尽量少用define
+//设计一个圆类，求圆的周长
+//圆求周长的公式：2*pi*半径
+//class 代表设计一个类，类后面紧跟着的就是类名称
+class yuan
+{
+
+    //访问权限
+public:
+    //属性
+    int m_r;
+    //行为
+    //获取圆的周长
+    double zc()
+    {
+        return 2 * pi * m_r;
+    }
+};
+int main()
+{
+    //通过圆类创建一个具体的圆（对象）
+    //实例化（通过一个类，创建一个对象的的过程）
+    yuan c1;
+    //给对象的属性进行赋值操作
+    c1.m_r = 10;
+    cout << "圆的周长为：" << c1.zc() << endl;
+    system("pause");
+    return 0;
+}
+</code></pre>
+<p>设计一个学生类，属性有姓名和学号，可以给姓名和学号赋值，可以显示学生的姓名和学号</p>
+<ul>
+<li>类中的属性和行为 我们统称为成员</li>
+<li>属性    也叫成员属性   成员变量</li>
+<li>行为        成员函数      成员方法</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+//设计一个学生类，属性有姓名和学号，可以给姓名和学号赋值，
+//可以显示学生的姓名和学号
+
+//设计学生类
+class student
+{
+public: //公共权限
+    //属性
+    string name;
+    int num;
+    //行为
+    //显示姓名和学号
+    void show()
+    {
+
+        cout << "姓名：" << name << "学号：" << num << endl;
+    }
+    //给姓名赋值
+    void setname(string s)
+    {
+        name = s;
+    }
+    void setnum(int a)
+    {
+        num = a;
+    }
+};
+
+int main()
+{
+    //创建一个具体的学生 ，实例化对象
+    student s1 = {"王五", 11};
+    //给对象的属性进行赋值操作
+    // s1.name = "张三";
+    // s1.setname("张三");
+    // s1.num1 = 1111;
+    //显示学生信息
+    s1.show();
+    student s2;
+    // s2.name = "李四";
+    // s2.num = 1111;
+    s2.setname("张三");
+    s2.setnum(222);
+    s2.show();
+    system("pause");
+    return 0;
+}
+</code></pre>
+<p>封装意义二：</p>
+<p>类在设计师，可以把属性和行为放在不同的权限下，加以控制</p>
+<p>访问权限有三种：</p>
+<ul>
+<li>public                公共权限</li>
+<li>protected         保护权限</li>
+<li>private              私有权限 </li>
+</ul>
+<p>类内是可以访问三个权限的，类外只能访问共有权限</p>
+<h4 id="4-1-2-Struct和Class的区别"><a href="#4-1-2-Struct和Class的区别" class="headerlink" title="4.1.2 Struct和Class的区别"></a>4.1.2 Struct和Class的区别</h4><p>在C++中struct和class位于的区别在于默认的访问权限不同</p>
+<ul>
+<li>struct 默认权限为公共</li>
+<li>class 默认权限为私有</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <ctime>
+#include <iostream>
+#include <string>
+using namespace std;
+class c1
+{
+
+    int a; //默认权限是私有
+};
+struct c2
+{
+    int a; //默认权限为公有
+};
+
+int main()
+{
+
+    //c1 c1;
+    // c1.a = 10;//不可访问
+    c2 c2;
+    c2.a = 10;//可以访问
+    cout << c2.a << endl;
+    //Struct和Class的区别
+    //+ struct 默认权限为公共  pubilc
+    //+ class 默认权限为私有   private
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="4-1-3-成员属性设置为私有"><a href="#4-1-3-成员属性设置为私有" class="headerlink" title="4.1.3 成员属性设置为私有"></a>4.1.3 成员属性设置为私有</h4><ul>
+<li><p>将所有成员属性设置为私有，可以自己控制读写权限</p>
+</li>
+<li><p>对于写权限，我们可以检测数据的有效性</p>
+</li>
+<li><p>return;<em>//跳出函数</em></p>
+</li>
+<li><p>实际开发过程中需要设置数据的读写权限，所有需要区分公有私有</p>
+</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <ctime>
+#include <iostream>
+#include <string>
+using namespace std;
+
+//成员属性设置为私有
+//1、将所有成员属性设置为私有，可以自己控制读写权限
+//2、对于写权限，我们可以检测数据的有效性
+//
+class Person
+{
+public:
+    //写姓名
+    //可读可写
+    void setname(string n)
+    {
+        name = n;
+    }
+    //获取姓名
+    string getname() //
+    {
+        //类内可以操作
+        // age = 19;//初始化年龄
+        return name;
+    }
+    //获取年龄
+    int getage()
+    {   //类内可以操作
+        // age = 19;//初始化年龄
+        return age;
+    }
+    //设置年龄   可以判断一下
+    void setage(int a)
+    {
+        if (a < 0 || a > 150)
+        {
+            cout << "妖精,别跑！" << endl;
+            return; //跳出函数
+        }
+
+        age = a;
+    }
+    //写入女朋友
+    //只写
+    void setgirlfriden(string girl)
+    {
+        girlfriden = girl;
+    }
+
+private:
+    //姓名  可读可写
+    string name;
+    //年龄  只读
+    int age;
+    //女朋友  只写
+    string girlfriden;
+};
+
+int main()
+{
+    Person p;
+    p.setname("张三"); //可读可写
+    cout << "姓名：" << p.getname() << endl;
+    p.setage(21);
+    cout << "年龄：" << p.getage() << endl; //只读
+    p.setgirlfriden("小仓");
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="案例1：设计立方体类"><a href="#案例1：设计立方体类" class="headerlink" title="案例1：设计立方体类"></a>案例1：设计立方体类</h4><p>设计立方体类</p>
+<ul>
+<li>求出立方体的面积和体积</li>
+<li>分别用全局函数和成员函数判断两立方体是否相等</li>
+</ul>
+<p>==成员的属性都尽量设置为私有==</p>
+<pre class=" language-c++"><code class="language-c++">#include <ctime>
+#include <iostream>
+#include <string>
+using namespace std;
+//立方体设计
+//1、创建立方体类
+//2、设计属性
+//3、设计行为   获取立方体的面积和体积
+//4、分别用全局函数和成员函数(写在类里面)判断两个立方体是否相等
+
+class cube
+{
+public:
+    //行为//成员函数一般为公有
+    void setcube(int l, int w, int h)
+    {
+        m_l = l;
+        m_w = w;
+        m_h = h;
+    }
+    //获取面积
+    int s()
+    {
+        int s = 0;
+        s = 2 * (m_l * m_w + m_l * m_h + m_w * m_h);
+        return s;
+    }
+    //获取体积
+    int v()
+    {
+        int v = 0;
+        v = m_l * m_w * m_h;
+        return v;
+    }
+    //利用成员函数判断两个立方体是否相等
+    bool pdbyclass(cube &c) //传一个参数就行
+    {
+        if ((s() == c.s()) && (v() == c.v()))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+private:
+    //成员属性一般设置为私有
+    int m_l;
+    int m_w;
+    int m_h;
+};
+//利用全局函数判断两个立方体是否相等
+//引用方式
+bool panduan(cube &c1, cube &c2) //用引用的方式不会占太多内存了
+{
+    if ((c1.s() == c2.s()) && (c1.v() == c2.v()))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+//指针方式
+// bool panduan(cube *c1, cube *c2) //用引用的方式不会占太多内存了
+// {
+//     if ((c1->s() == c2->s()) && (c1->v() == c2->v()))
+//     {
+//         return true;
+//     }
+//     else
+//     {
+//         return false;
+//     }
+// }
+int main()
+{
+
+    cube c1;
+    c1.setcube(10, 10, 10);
+    cout << c1.s() << endl;
+    cout << c1.v() << endl;
+    cube c2;
+    c2.setcube(10, 10, 12);
+    cout << c2.s() << endl;
+    cout << c2.v() << endl;
+    //全局函数判断
+    bool ref1 = panduan(c1, c2);
+    if (ref1)
+    {
+        cout << "c1和c2是相等的" << endl;
+    }
+    else
+    {
+        cout << "c1和c2是不相等的" << endl;
+    }
+    //成员函数判断
+    bool ref2 = c1.pdbyclass(c2);
+    if (ref2)
+    {
+        cout << "c1和c2是相等的" << endl;
+    }
+    else
+    {
+        cout << "c1和c2是不相等的" << endl;
+    }
+
+    //cout << panduan(&c1, &c2);//指针方式
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="案例2：点和圆的关系"><a href="#案例2：点和圆的关系" class="headerlink" title="案例2：点和圆的关系"></a>案例2：点和圆的关系</h4><p>设计一个圆形类和一个点类，计算点和圆的关系</p>
+<p><img src="/2021/06/25/c-xue-xi-2-0-he-xin-bian-cheng/Users\X_Bruce\AppData\Roaming\Typora\typora-user-images\image-20210513165117849.png" alt="image-20210513165117849"></p>
+<ul>
+<li><p>在一个类中可以让另一个类做本类的成员private:</p>
+<p>  int m_r;    <em>//半径</em></p>
+<p>  Point m_center; <em>//圆心</em></p>
+</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <ctime>
+#include <iostream>
+#include <string>
+using namespace std;
+//点和圆的关系的案例
+//点类
+class Point
+{
+public:
+    //设置x坐标
+    void setx(int x)
+    {
+        m_x = x;
+    }
+    //获取x坐标
+    int getx()
+    {
+        return m_x;
+    }
+    //设置y坐标
+    void sety(int y)
+    {
+        m_y = y;
+    }
+    //获取y坐标
+    int gety()
+    {
+        return m_y;
+    }
+
+private:
+    int m_x; //横坐标
+    int m_y; //纵坐标
+};
+//圆类
+class yuan
+{
+public:
+    //设置半径
+    void setr(int r)
+    {
+        m_r = r;
+    }
+    //获取半径
+    int getr()
+    {
+        return m_r;
+    }
+    //设置圆心
+    void setcenter(Point center)
+    {
+        m_center = center;
+    }
+    //获取圆心
+    Point getcenter()
+    {
+        return m_center;
+    }
+
+private:
+    int m_r;        //半径
+    Point m_center; //圆心
+};
+//全局函数判断点和圆的关系
+void relation(yuan &c, Point &o)
+{
+    //计算两点之间的距离的平方
+    int destance = (c.getcenter().getx() - o.getx()) * (c.getcenter().getx() - o.getx()) + (c.getcenter().gety() - o.gety()) * (c.getcenter().gety() - o.gety());
+    //计算半径的平方
+    int rdestance = c.getr() * c.getr();
+    //判断关系
+    if (destance > rdestance)
+    {
+        cout << "点在圆外" << endl;
+    }
+    else if (destance == rdestance)
+    {
+        cout << "点在圆上" << endl;
+    }
+    else
+    {
+        cout << "点在圆内" << endl;
+    }
+}
+
+int main()
+{
+    //创建圆
+    yuan c1;
+    c1.setr(10);
+    Point center;
+    center.setx(10);
+    center.sety(0);
+    c1.setcenter(center);
+
+    //创建点
+    Point p;
+    p.setx(10);
+    p.sety(10);
+
+    //判断关系
+    relation(c1, p);
+    system("pause");
+    return 0;
+}
+</code></pre>
+<ul>
+<li>分文件编写：头文件中写声明，源文件中写实现</li>
+<li>头文件与源文件的名称不一定相同，但源文件要记得加头文件声明</li>
+</ul>
+<h3 id="4-2-对象的初始化和清理"><a href="#4-2-对象的初始化和清理" class="headerlink" title="4.2 对象的初始化和清理"></a>4.2 对象的初始化和清理</h3><ul>
+<li>C++中的面向对象来源于生活，每个对象也都会有初始设置一级对象销毁前的清理数据的设置</li>
+</ul>
+<h4 id="4-2-1-构造函数和析构函数"><a href="#4-2-1-构造函数和析构函数" class="headerlink" title="4.2.1 构造函数和析构函数"></a>4.2.1 构造函数和析构函数</h4><p>对象的初始化和清理也是两个非常重要的安全问题</p>
+<ul>
+<li><p>一个对象或者变量没有初始状态，对其使用后果是未知的</p>
+</li>
+<li><p>同样的使用完一个对象或变量，没有及时清理，也会造成一定的安全问题</p>
+</li>
+</ul>
+<p>C++利用了构造函数和析构函数解决上述问题，这两个函数将会被编译器自动调用，完成对象初始化和清理工作，对象的初始化和清理工作是编译器强制要求我们做的事情，因此我们不提供构造和析构，编译器会提供编译器提供的构造函数和析构函数都是空实现</p>
+<ul>
+<li>构造函数：主要作用在于创建对象时为对象的成员属性赋值，构造函数由编译器自动调用，无需手动调用</li>
+<li>析构函数：主要作用在于对象销毁前系统自动调用，执行一些清理工作</li>
+</ul>
+<p><strong>构造函数语法</strong>；<code>类名（）{}</code></p>
+<ul>
+<li><p>构造函数，没有返回值也不写void</p>
+</li>
+<li><p>函数名与类名相同</p>
+</li>
+<li><p>构造函数可以有参数，因此可以发送重载</p>
+</li>
+<li><p>程序在调用对象时会自动调用构造，无需手动调用，而且只会调用一次</p>
+</li>
+</ul>
+<p><strong>析构函数语法</strong>：<code>~类名（）{}</code></p>
+<ul>
+<li>析构函数，没有返回值也不写void</li>
+<li>函数名称与类名相同，在名称前加上符号~</li>
+<li>析构函数不可以有参数，因此不可以发生重载</li>
+<li>程序在对象销毁前会自动调用硒鼓，无需手动调用，而且只会调用一次</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//对象的初始化和清理
+//1、构造函数进行初始化操作
+class Person
+{
+public:
+    //1、构造函数，没有返回值也不写void
+    //2、函数名与类名相同
+    //3、构造函数可以有参数，因此可以发送重载
+    //4、程序在调用对象时会自动调用构造，无需手动调用，而且只会调用一次
+    Person()
+    {
+        cout << "Person构造函数的调用" << endl;
+    }
+
+    //2、析构函数进行清理工作
+    //1、析构函数，没有返回值也不写void
+    //2、函数名称与类名相同，在名称前加上符号~
+    //3、析构函数不可以有参数，因此不可以发生重载
+    //4、程序在对象销毁前会自动调用析构函数，无需手动调用，而且只会调用一次
+    ~Person()
+    {
+        cout << "Person析构函数的调用" << endl;
+    }
+};
+//构造和析构都是必须有的函数，如果我们自己 不提供，编译器会提供一个空实现的构造和析构
+void test01()
+{
+
+    Person p; //局部变量在栈上的数据，test01执行完毕后，释放这个对象
+}
+
+int main()
+{
+    // test01();
+    Person p;        //结束之后只有构造没有析构了   此时的p仍然在栈区
+                     //只有new或malloc才会在堆区
+    system("pause"); //main()函数执行完，变量销毁完才会执行析构，在这一行中断了
+
+    return 0;
+}
+</code></pre>
+<h4 id="4-2-2-构造函数的分类及调用"><a href="#4-2-2-构造函数的分类及调用" class="headerlink" title="4.2.2 构造函数的分类及调用"></a>4.2.2 构造函数的分类及调用</h4><p>两种方式分类：</p>
+<p>​    按参数分为：有参构造和无参构造</p>
+<p>​    按类型分为：普通构造和拷贝构造</p>
+<p>三种调用方式：</p>
+<p>​    括号法</p>
+<p>​    显示法</p>
+<p>​    隐式转换法</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//1、构造函数的分类
+//分类
+// 按照参数分类      无参构造(默认构造)和有参构造
+// 按照类型分类      普通构造函数和拷贝构造函数
+class Person
+{
+public:
+    //构造函数
+    Person() //无参
+    {
+
+        cout << "Person无参构造函数的调用" << endl;
+    }
+    Person(int a) //有参
+    {
+        age = a;
+
+        cout << "Person有参构造函数的调用" << endl;
+    }
+    //拷贝构造函数
+    Person(const Person &p) //先记住这种写法  常量引用又是指针常量，前面在加一个const就是常量指针常量
+    {
+        //将传入的人身上的所有的属性，拷贝到当前的函数身上
+
+        age = p.age;
+        cout << "Person拷贝构造函数的调用" << endl;
+    }
+    ~Person()
+    {
+        cout << "Person析构函数的调用" << endl;
+    }
+    int age;
+};
+void test01() //创建一个对象就会调用一次，创建两个对象就会调用两次
+{
+    //1、括号法
+    // Person p1;//默认构造函数调用
+    // Person p2(10);//有参函数的调用
+    // Person p3(p2); //拷贝构造函数构造
+    //注意事项1
+    //调用默认构造函数时，不要加（）
+    //因为下面这行代码，编译器会认为是一个函数的声明，不会认为在创建对象
+
+    //Person p1();
+
+    // cout << "p2的年龄为：" << p2.age << endl;
+    //cout << "p3的年龄为：" << p3.age << endl;
+    //2、显示法
+    Person p1;
+    Person p2 = Person(10); //有参构造
+    Person p3 = Person(p2); //拷贝构造
+    //Person(10);     //匿名对象  特点：当前行执行结束后，系统会立即回收掉匿名对象
+    //注意事项2
+    //不要利用拷贝构造函数   初始化匿名对象   编译器任务Person(p3)===Person p3:对象声明
+
+    //Person(P3);
+    //3、隐式转换法
+    Person p4 = 10; //相当于写了Person p4 = person(10);有参构造的调用
+    Person p5 = p4; //拷贝构造
+}
+int main()
+{
+
+    test01();
+
+    // Person s;
+    system("pause");
+
+    return 0;
+}
+</code></pre>
+<h4 id="4-2-3-拷贝构造函数调用时机"><a href="#4-2-3-拷贝构造函数调用时机" class="headerlink" title="4.2.3 拷贝构造函数调用时机"></a>4.2.3 拷贝构造函数调用时机</h4><p>C++中拷贝构造函数调用时机通常有三种情况</p>
+<ul>
+<li><p>使用一个已经创建完毕的对象来初始化一个新对象</p>
+</li>
+<li><p>值传递的方式给函数参数传值</p>
+</li>
+<li><p>以值方式返回局部对象</p>
+</li>
+</ul>
+<p>当函数的返回值是类对象时，系统自动调用拷贝构造函数（会有编译器可能会进行优化）</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+//拷贝构造函数调用时间
+
+class Person
+{
+public:
+    Person()
+    {
+
+        cout << "Person构造函数的调用" << endl;
+    }
+    Person(int age)
+    {
+
+        m_age = age;
+        cout << "Person有参构造函数的调用" << endl;
+    }
+    Person(const Person &p)
+    {
+        m_age = p.m_age;
+        cout << "Person拷贝构造函数的调用" << endl;
+    }
+
+    ~Person()
+    {
+        cout << "Person析构函数的调用" << endl;
+    }
+    int m_age;
+};
+//1、使用一个基于创建完毕的对象来车初始化一个新对象
+void test01()
+{
+    Person p1(20);
+    Person p2(p1);
+    cout << "p2的年龄为：" << p2.m_age << endl;
+}
+//2、值传递的方式给函数参数传值
+void dowork(Person p) //
+{
+}
+void test02()
+{
+
+    Person p;
+    dowork(p);
+}
+//3、值方式返回局部对象
+Person dowork2()
+{
+    Person p1;
+    return p1;
+}
+void test03()
+{
+    Person p = dowork2();
+}
+int main()
+{
+    // Person p;
+    //test01();
+    //test02();
+    test03();
+    system("pause");
+
+    return 0;
+}
+</code></pre>
+<h4 id="4-2-4-构造函数的调用规则"><a href="#4-2-4-构造函数的调用规则" class="headerlink" title="4.2.4 构造函数的调用规则"></a>4.2.4 构造函数的调用规则</h4><p>默认情况下，C++编译器至少给一个类添加3个函数</p>
+<ul>
+<li><p>默认构造函数（无参，函数体为空）</p>
+</li>
+<li><p>默认析构函数（无参，函数体为空）</p>
+</li>
+<li><p>默认拷贝函数，对属性进行值拷贝</p>
+</li>
+</ul>
+<p>构造函数调用规则：</p>
+<ul>
+<li>如果用户定义有参构造函数，C++不在提供默认无参构造，但是会提供默认拷贝构造</li>
+<li>如果用户定义拷贝构造函数，C++不会再提供其他构造函数</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//构造函数的调用规则
+//1、创建一个类，C++编译器会给每个类都添加至少3个函数
+//默认构造（空实现）
+//析构函数 （空实现）
+//拷贝构造 （值拷贝）
+
+//2、如果我们写了有参构造函数，编译器就不再提供默认构造，依然提供拷贝构造
+//如果我们写了拷贝构造函数，编译器就不提供其他了
+class Person
+{
+
+public:
+    // Person()
+    // {
+
+    //     cout << " Person的默认构造函数调用" << endl;
+
+    // }
+    Person(int a)
+    {
+        age = a;
+        cout << " Person的有参构造函数调用：" << age << endl;
+    }
+    // Person(const Person &p)
+    // {
+    //     age = p.age;
+    //     cout << "Person的拷贝构造函数调用" << endl;
+    // }
+    ~Person()
+    {
+
+        cout << "Person的析构函数调用" << endl;
+    }
+    int age;
+};
+// void test01()
+// {
+//     Person p;
+//     p.age = 18;
+//     Person p2(p);//编译器做了值拷贝x
+//     cout << "p2的年龄为：" << p2.age << endl;
+// }
+void test02()
+{
+    Person p(28);
+    Person p2(p);
+}
+int main()
+{
+    // Person p1;
+    // test01();
+    test02();
+    system("pause");
+
+    return 0;
+}
+</code></pre>
+<h4 id="4-2-5-深拷贝与浅拷贝"><a href="#4-2-5-深拷贝与浅拷贝" class="headerlink" title="4.2.5 深拷贝与浅拷贝"></a>4.2.5 深拷贝与浅拷贝</h4><p>浅拷贝：简单的赋值拷贝操作</p>
+<p>深拷贝：在堆区重新申请空间，进行拷贝操作</p>
+<p><strong>浅拷贝带来的问题</strong>：堆区的内存重复释放，要用深拷贝去解决</p>
+<p><img src="/2021/06/25/c-xue-xi-2-0-he-xin-bian-cheng/Users\X_Bruce\AppData\Roaming\Typora\typora-user-images\image-20210517181016917.png" alt="image-20210517181016917"></p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//深拷贝与浅拷贝
+class Person
+{
+
+public:
+    Person()
+    {
+
+        cout << " Person的默认构造函数调用" << endl;
+    }
+    Person(int a, int height)
+    {
+        age = a;
+        //堆区的数据，由程序员手动开辟，也由其手动释放
+        m_height = new int(height); //创建堆区的数据  返回该数据类型的指针
+        cout << " Person的有参构造函数调用：" << age << endl;
+    }
+    //自己实现拷贝构造函数，解决浅拷贝带来的问题
+
+    Person(const Person &p)
+    {
+
+        cout << "拷贝构造函数调用" << endl;
+        age = p.age;
+        //m_height = p.m_height;编译器默认实现就是这行代码
+        //深拷贝操作
+        m_height = new int(*p.m_height);
+    }
+    ~Person()
+    {
+
+        //析构代码，将堆区开辟的数据做释放操作
+        if (m_height != NULL)
+        {
+            delete m_height;
+            m_height = NULL;
+        }
+
+        cout << "Person的析构函数调用" << endl;
+    }
+    int age;
+    int *m_height;
+};
+void test01() //栈的释放规则，先进后出
+{
+
+    Person p1(19, 185);
+    cout << "p1的年龄为：" << p1.age << "身高为：" << *p1.m_height << endl;
+    Person p2(p1);
+    cout << "p2的年龄为：" << p2.age << "身高为：" << *p2.m_height << endl;
+}
+
+int main()
+{
+    test01();
+    system("pause");
+
+    return 0;
+}
+</code></pre>
+<p>==如果属性有在堆区开辟的，一定要提供自己的拷贝构造函数，防止浅拷贝带来的问题==</p>
+<h4 id="4-2-6-初始化列表"><a href="#4-2-6-初始化列表" class="headerlink" title="4.2.6 初始化列表"></a>4.2.6 初始化列表</h4><p>C++提供了初始化 列表语法，用来初始化属性</p>
+<p><code>构造函数（）:属性1（值1），属性2（值2）...{}</code></p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//初始化列表
+class Person
+{
+
+public:
+    //传统初始化
+    // Person(int a,int b,int c)//构造函数
+    // {
+    //     m_a = a;
+    //     m_b = b;
+    //     m_c = c;
+    // }
+    //初始化列表初始化属性1
+    // Person() : m_a(10), m_b(10), m_c(10)
+    // {
+
+    // }
+    //初始化列表方法2
+    Person(int a, int b, int c) : m_a(a), m_b(b), m_c(c)
+    {
+    }
+    //属性
+    int m_a;
+    int m_b;
+    int m_c;
+};
+void test01()
+{
+
+    //Person p(10, 20, 30);
+    Person p(2, 5, 8);
+    cout << "m_a=" << p.m_a << endl;
+    cout << "m_b=" << p.m_b << endl;
+    cout << "m_c=" << p.m_c << endl;
+}
+int main()
+{
+
+    test01();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="4-2-7-类和对象作为类成员"><a href="#4-2-7-类和对象作为类成员" class="headerlink" title="4.2.7 类和对象作为类成员"></a>4.2.7 类和对象作为类成员</h4><p>C++类中的成员可以是另一个类的对象，我们称该成员为对象成员</p>
+<pre class=" language-c++"><code class="language-c++">class A()
+class B
+{
+    A a;
+}
+</code></pre>
+<p>B类中有对象A作为成员，A为对象成员</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+
+//类对象作为类成员
+//手机类
+class Phone
+{
+public:
+    //机型
+    Phone(string pname) //手机类的构造函数
+    {
+        cout << "手机的构造函数调用" << endl;
+        p_name = pname;
+    }
+
+    //手机品牌名称
+    string p_name;
+};
+
+//人类
+class Person
+{
+public:
+    //Phone m_phone = pname;   隐式转换法
+
+    Person(string name, string pname) : m_name(name), m_phone(pname) //人类的构造函数+初始化列表
+    {
+        cout << "人类的构造函数调用" << endl;
+    }
+    //姓名
+    string m_name;
+    //手机
+    Phone m_phone;
+};
+void test01()
+{
+
+    Person p("王五", "苹果max");
+    cout << "姓名：" << p.m_name << "机型：" << p.m_phone.p_name << endl;
+}
+int main()
+{
+    test01();
+
+    system("pause");
+    return 0;
+}
+
+
+手机的构造函数调用
+人类的构造函数调用
+姓名：王五机型：苹果max
+请按任意键继续. . .
+    
+手机的构造函数调用
+人类的构造函数调用
+姓名：王五机型：苹果max
+人类的析构函数调用
+手机类的析构函数调用
+请按任意键继续. . .
+</code></pre>
+<ul>
+<li>先调用了手机类构造函数，然后调用了人类构造函数</li>
+<li>当其他的类的对象作为本类的成员时，先构造类对象，在构造自身，</li>
+<li>析构的顺序和构造的顺序相反</li>
+</ul>
+<h4 id="4-2-8-静态成员函数"><a href="#4-2-8-静态成员函数" class="headerlink" title="4.2.8 静态成员函数"></a>4.2.8 静态成员函数</h4><p>静态成员就是在成员变量和成员函数前面加上关键字static，称为静态成员，静态成员分为：</p>
+<ul>
+<li><p>静态成员变量</p>
+<ul>
+<li><p>所有对象共享同一份数据</p>
+</li>
+<li><p>在编译阶段分配内存</p>
+</li>
+<li><p>类内声明，类外初始化</p>
+</li>
+</ul>
+</li>
+<li><p>静态成员函数</p>
+<ul>
+<li>所有对象共享同一个函数</li>
+<li>静态成员函数只能访问静态成员变量</li>
+</ul>
+</li>
+</ul>
+<p>：：是作用域运算符//类名访问静态成员的方法</p>
+<ul>
+<li>初始化和定义的区别：<ul>
+<li>初始化时赋一个初值，而定义是在分配内存，声明只是表明了变量的数据类型和属性，并不分配内存，定义是要分配内存的</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//静态成员函数
+//所有对象共享同一个函数
+//静态成员函数只能访问静态成员变量
+class Person
+{
+public:
+    //静态成员函数
+    static void func()
+    {
+        m_a = 100; //静态函数可以访问静态成员变量
+                   // m_b= 200；//静态成员函数不可以访问非静态成员变量，无法区分到底是哪个对象的m_b属性
+        cout << "static void func函数的调用" << endl;
+    }
+    static int m_a; //静态成员变量  必须在类内声明类外初始化一下
+    int m_b;        //非静态成员变量
+
+    //静态成员函数也是有访问权限的
+private:
+    static void func2()
+    {
+
+        cout << "static void func2函数的调用" << endl;
+    }
+};
+int Person::m_a = 0; //类外初始化
+//有两种访问方式
+void test01()
+{
+    //1、通过对象来访问
+    Person p;
+    p.func();
+
+    //2、通过类名来访问
+    Person::func();
+    // Person::func2();//类外访问不到私有静态成员函数
+}
+
+int main()
+{
+
+    test01();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h3 id="4-3-C-对象模型和this指针"><a href="#4-3-C-对象模型和this指针" class="headerlink" title="4.3 C++对象模型和this指针"></a>4.3 C++对象模型和this指针</h3><h4 id="4-3-1-成员变量和成员函数分开储存"><a href="#4-3-1-成员变量和成员函数分开储存" class="headerlink" title="4.3.1 成员变量和成员函数分开储存"></a>4.3.1 成员变量和成员函数分开储存</h4><p>在C++中，类内成员变量和成员函数分开储存</p>
+<p>只有非静态变量才属于类的对象</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//成员变量和成员函数分开存储
+class Person
+{
+    int m_a = 10;          //非静态成员变量   //属于类的对象上面的
+    static int m_b;        //静态成员变量，类内声明，类外初始化//不属于类的对象上
+    void fun(){};          //非静态成员函数  不属于类的对象上
+    static void func2(){}; //静态成员函数  不属于类的对象上
+};
+int Person::m_b = 10; //类外初始化
+void test01()
+{
+    Person p;
+    //空对象占用的内存空间为： 1
+    //C++编译器会给每个空对象也分配一个字节空间，为了区分空对象占的内存的位置
+    //每一个空对象，都应该有一个独一无二的内存地址
+    cout << "size of p = " << sizeof(p) << endl;
+}
+void test02()
+{
+    Person p;
+    //非静态成员变量对象占用的内存空间为： 4
+    cout << "size of p = " << sizeof(p) << endl;
+    //cout << "int m_a = " << p.m_a << endl;
+}
+
+int main()
+{
+    //test01();
+    test02();
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="4-3-2-this指针概念"><a href="#4-3-2-this指针概念" class="headerlink" title="4.3.2 this指针概念"></a>4.3.2 this指针概念</h4><p>在C++中，类内成员变量和成员函数分开储存</p>
+<p>每一个非静态成员函数只会诞生一份函数实例，也就是说多个同类型的对象会用一块代码，那么问题是：这一块代码是如何区分调用自己的那个对象是哪个呢？</p>
+<p>C++通过提供特殊的对象指针，this指针，解决上述问题，this指针指向被调用的成员函数所属的对象</p>
+<p>this指针是隐含每一个非静态成员函数内的一种指针</p>
+<p>this指针不需要定义，直接使用即可</p>
+<p>this指针的用途：</p>
+<ul>
+<li><p>当形参和成员变量同名时，可以使用this指针来区分</p>
+</li>
+<li><p>在类的非静态成员函数中返回对象本身，可使用return *this</p>
+</li>
+</ul>
+<p>==要理解重点==：链式编程思想，函数的返回值要用引用</p>
+<p><strong>若返回的是一个值的话，相当于创建了个person p3 =p2,浅拷贝了一个p3,下面的运算是p3加10,而不是p2了</strong></p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+class Person
+{
+
+    // public:
+    //     Person(int age )//构造函数  //形参和实参（成员对象）不能混淆
+    //     {
+
+    //         age = age;
+    //     }
+    //     int age;
+public:
+    Person(int age) //(有参构造)构造函数  //形参和实参（成员对象）不能混淆
+    {
+        //this指针指向的是被调用的成员函数所属的对象  指向的对象是p1;
+
+        this->age = age;
+    }
+    Person &Personaddage(Person &p) //该函数返回的不是指针或者引用，因为前面加了*所以返回的是p2的本体
+                                    //引用指向本身内存，不用引用就是拷贝了，
+                                    //加引用返回的是person类型的对象，而加引用返回的是p2本身；
+                                    //不引用就会通过拷贝构造创建新对象，之后的所有的操作都相当于是在对新对象进行操作，p2就不会改变了
+                                    //叠加实在原数据改变的基础上递增，所以用引用，引用时地址传递，会改变原有的值，不用引用就不会改变原有的值，就是复制操作了
+                                    //防止拷贝构造
+    {
+
+        this->age += p.age;
+        //this指向p2的指针，而*this指向的就是p2这个对象本体
+
+        return *this;
+    }
+    int age;
+};
+
+//1、解决名称冲突
+void test01()
+{
+
+    Person p1(18);
+    cout << "person的年龄为：" << p1.age << endl;
+}
+
+//2、返回对象本身用 * this
+void test02()
+{
+    Person p1(10);
+    Person p2(10);
+    //若可以返回p2本身，则就可以一直执行加的操作
+    //链式编程思想
+    p2.Personaddage(p1).Personaddage(p1);
+
+    cout << "p2的年龄为：" << p2.age << endl;
+}
+
+int main()
+{
+    //test01();
+    test02();
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="4-3-3-空指针访问成员函数"><a href="#4-3-3-空指针访问成员函数" class="headerlink" title="4.3.3 空指针访问成员函数"></a>4.3.3 空指针访问成员函数</h4><p>C++中空指针也是可以调用成员函数的，但是也要注意有没有用到this指针</p>
+<p>如果用到this指针，需要加以判断保证代码的健壮性</p>
+<ul>
+<li>代码的健壮性值得是自己的代码在不影响逻辑的情况下不存在崩溃的问题</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+//空指针调用成员函数
+
+class Person
+{
+public:
+    void showclassname()
+    {
+        cout << "this is person class" << endl;
+    }
+    void showpersonage()
+    {
+        //报错原因是传入的指针为null
+        if (this == NULL)
+        {
+            return;
+        }
+
+        cout << "age = " << this->m_age << endl; //空指针不能访问成员数据
+    }
+    int m_age;
+};
+
+void test01()
+{
+    Person *p = NULL;
+    p->showclassname();
+    p->showpersonage();
+}
+
+int main()
+{
+    test01();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="4-3-4-const修饰成员函数（限定了只读状态）"><a href="#4-3-4-const修饰成员函数（限定了只读状态）" class="headerlink" title="4.3.4 const修饰成员函数（限定了只读状态）"></a>4.3.4 const修饰成员函数（限定了只读状态）</h4><p>常函数：</p>
+<ul>
+<li><p>成员函数后加const后我们称为这个函数为常函数</p>
+</li>
+<li><p>常函数内不可以修改成员属性</p>
+</li>
+<li><p>成员属性声明时加关键字mutable后，在常函数中依然可以修改</p>
+</li>
+</ul>
+<p>常对象：</p>
+<ul>
+<li>声明对象前加const称该对象为常对象</li>
+<li>常对象只能调用常函数</li>
+</ul>
+<p><em>this指针的本质  是指针常量  指针的指向是不可以修改的</em></p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//常函数
+class Person
+{
+public:
+    //this指针的本质   是指针常量   指针的指向是不可以修改的
+    //const Person * const this;
+    //在成员函数后加const ,修饰的是this指针，让指针指向的值也不可以修改
+    void showPerson() const
+    {
+
+        //this->m_a = 100;
+        // this = NULL;//this指针是不可以修改指针的指向的
+    }
+    void fun()
+    {
+    }
+    int m_a;
+    mutable int m_b; //特殊变量，即使在常函数中，也可以修改这个值,加上关键字mutable
+};
+void test01()
+{
+    Person p;
+    p.showPerson();
+}
+//常对象
+void test02()
+{
+    const Person p; //在对象前加上const ,变成常对象
+    //p.m_a = 100;
+    p.m_b = 100; //m_b是特殊值，在长对象下也可以修改
+    //常对象只能调用常函数
+    p.showPerson();
+    //p.fun();常对象不可以调用普通成员函数，因为普通成员函数可以修改属性
+}
+
+int main()
+
+{
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h3 id="4-4-友元"><a href="#4-4-友元" class="headerlink" title="4.4 友元"></a>4.4 友元</h3><p>打个比方，你家有客厅(public)，也有你的卧室(private)</p>
+<p>客厅允许所有的客人都可以进去，但是你的卧室是私有的，也就是说只有你能进去，但是呢，你也可以允许你的好朋友一起进去</p>
+<p>在程序里，有些私有属性也想让类外特殊的一些函数或者类进行访问，就需要用到友元的技术</p>
+<p>友元的目的就是让一个函数或者类访问另一个类中私有成员</p>
+<p>友元的关键字为==friend==</p>
+<p>友元的三种实现</p>
+<ul>
+<li><p>全局函数做友元</p>
+</li>
+<li><p>类做友元</p>
+</li>
+<li><p>成员函数做友元</p>
+</li>
+</ul>
+<h4 id="4-4-1-全局函数做友元"><a href="#4-4-1-全局函数做友元" class="headerlink" title="4.4.1 全局函数做友元"></a><strong>4.4.1 全局函数做友元</strong></h4><p><code>friend void goodguy(building *building);</code></p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+#include <string>
+//建筑物的类
+class building
+{
+    //goodgay全局函数是building好朋友，可以访问building中私有成员
+    friend void goodguy(building *building);
+
+public:
+    building() //构造函数，赋初值
+    {
+
+        m_sittingroom = "客厅";
+        m_bedroom = "卧室";
+    }
+    string m_sittingroom; //客厅
+
+private:
+    string m_bedroom; //卧室
+};
+//全局函数
+void goodguy(building *building)
+{
+
+    cout << "好朋友的全局函数  正在访问：" << building->m_sittingroom << endl;
+    cout << "好朋友的全局函数  正在访问：" << building->m_bedroom << endl; //私有属性不能访问
+}
+void test01()
+{
+    building building;
+    goodguy(&building);
+}
+
+int main()
+{
+    test01();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="4-4-2-类做友元"><a href="#4-4-2-类做友元" class="headerlink" title="4.4.2 类做友元"></a><strong>4.4.2 类做友元</strong></h4><p>==类内声明，类外实现（要加作用域）==</p>
+<p><code>friend class goodguy;</code></p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//类做友元
+
+class Building; //函数的声明
+class goodguy
+{
+public:
+    goodguy();    //goodguy类的构造函数
+    void visit(); //参观函数，访问Building中的属性
+    Building *building;
+};
+class Building
+{
+    friend class goodguy;//关键点
+
+public:
+    Building();           //Building类的构造函数
+    string m_sittingroom; //客厅
+
+private:
+    string m_bedroom; //卧室
+};
+//类外写成员函数
+//普通成员函数，类外定义返回值类型后面写作用域
+//类内做声明，类外做函数的实现
+Building::Building() //加一个作用域
+{
+    m_sittingroom = "客厅";
+    m_bedroom = "卧室";
+}
+goodguy::goodguy() //加一个作用域
+{
+    //创建一个建筑物对象
+    //因为在goodguy类内定义了一个Building类型的指针，因此在类外写构造函数的时候采用new创建一个地址并用building接受，保证和类内所写的内容一致
+    //new  到堆区，要不然就在栈区，用完就是释放了
+    building = new Building;
+}
+void goodguy::visit() //这是goodguy下面的visit函数
+{
+    cout << "好基友这个类正在访问：" << building->m_sittingroom << endl;
+    cout << "好基友这个类正在访问：" << building->m_bedroom << endl;
+}
+void test01()
+{
+    //先调用goodguy里的构造函数，然后也会调用building里的构造函数
+    goodguy gg;
+    gg.visit(); //访问building里面维护的sittingroom
+}
+int main()
+{
+
+    test01();
+    system("pause");
+    return 0;
+}
+</code></pre>
+<p>####<strong>4.4.3 成员函数做友元</strong></p>
+<p><code>friend void goodguy::visit();</code></p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+#include <string>
+
+class Building; //前置声明
+class goodguy
+{
+public:
+    goodguy();
+    void visit();  //让visit函数可以访问building类中的私成员
+    void visit2(); //让visit2函数不可以访问building类中的私成员
+    //Building本来就不属于goodguy，需要通过一个指针来找到Building,然后再堆里新开辟空间了
+    Building *building; //前置声明没有实现，要访问对象只能用指针，不能使用对象
+};
+class Building
+{
+    //friend void visit();//告诉是全局函数
+    friend void goodguy::visit(); //告诉是goodguy下的visit成员函数作为本类中的好朋友，可以访问私有成员
+public:
+    //养成习惯，所有的函数都写到类外实现
+    Building();           //构造函数，函数名要和类名一致
+    string m_sittingroom; //客厅
+private:
+    string m_bedroom; //卧室
+};
+//类外实现成员函数
+Building::Building() //构造函数赋初值
+{
+    m_sittingroom = "客厅";
+    m_bedroom = "卧室";
+}
+goodguy::goodguy()
+{
+    building = new Building; //用building指针维护Building建筑物这个对象
+}
+void goodguy::visit() //让visit函数可以访问building类中的私成员
+{
+    cout << "visit 函数正在访问:" << building->m_sittingroom << endl;
+    cout << "visit 函数正在访问:" << building->m_bedroom << endl;
+}
+void goodguy::visit2() //让visit2函数不可以访问building类中的私成员
+{
+    cout << "visit 函数正在访问:" << building->m_sittingroom << endl;
+    // cout << "visit 函数正在访问:" << building->m_bedroom << endl;
+}
+void test01()
+{
+    goodguy gg;
+    gg.visit();
+    gg.visit2();
+}
+int main()
+{
+    test01();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h3 id="4-5-运算符重载"><a href="#4-5-运算符重载" class="headerlink" title="4.5 运算符重载"></a>4.5 运算符重载</h3><p>运算符重载概念：对于已有的运算符重新进行定义，赋予其另一种功能，以适应不同的数据类型</p>
+<h4 id="4-5-1-加号运算符重载"><a href="#4-5-1-加号运算符重载" class="headerlink" title="4.5.1 加号运算符重载"></a>4.5.1 加号运算符重载</h4><p>实现两个自定义数据类型相加的运算</p>
+<p>对于内置的数据类型，编译器知道如何进行运算</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+//加号运算符重载
+
+class Person
+{
+public:
+    //1、成员函数重载+号
+    // Person operator+(Person &p)
+    // {
+    //     Person temp;
+    //     temp.m_a = this->m_a + p.m_a;
+    //     temp.m_b = this->m_b + p.m_b;
+    //     return temp;
+    // }
+    int m_a;
+    int m_b;
+};
+//2、全局函数重载+号
+Person operator+(Person &p1, Person &p2)
+{
+    Person temp;
+    temp.m_a = p1.m_a + p2.m_a;
+    temp.m_b = p1.m_b + p2.m_b;
+    return temp;
+}
+//函数重载的版本
+Person operator+(Person &p1, int num)
+{
+    Person temp;
+    temp.m_a = p1.m_a + num;
+    temp.m_b = p1.m_b + num;
+    return temp;
+}
+void test01()
+{
+    Person p1;
+    p1.m_a = 10;
+    p1.m_b = 10;
+    Person p2;
+    p2.m_a = 10;
+    p2.m_b = 10;
+    //成员函数重载本质调用
+    //Person p3 = p1.operator+(p2);
+    //全局函数重载本质
+    //Person p3 = operator+(p1,p2);
+    Person p3 = p1 + p2;
+    //运算符重载，也可以发生函数重载
+    Person p4 = p1 + 100;
+    cout << "p3.m_a =" << p3.m_a << endl;
+    cout << "p3.m_b =" << p3.m_b << endl;
+
+    cout << "p4.m_a =" << p4.m_a << endl;
+    cout << "p4.m_b =" << p4.m_b << endl;
+}
+
+int main()
+{
+    test01();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<ul>
+<li>对于内置的数据类型的表达式的运算符是不肯改变的</li>
+<li>不要滥用运算符重载</li>
+</ul>
+<h4 id="4-5-2-左移运算符重载"><a href="#4-5-2-左移运算符重载" class="headerlink" title="4.5.2 左移运算符重载"></a>4.5.2 左移运算符重载</h4><p>可以输出自定义数据类型</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//左移运算符重载
+class Person
+{
+    //如果成员属性是私有的，可以通过友元的方式去访问它
+    friend ostream &operator<<(ostream &cout, Person &p);
+
+public:
+    Person(int a, int b) //构造函数初始化
+    {
+        m_a = a;
+        m_b = b;
+    }
+
+private:
+    //利用成员函数重载左移运算符
+    //通常不会利用成员函数<<重载运算符
+    void operator<<(Person &p)
+    {
+    }
+    int m_a;
+    int m_b;
+};
+//只能利用全局函数重载左移运算符
+//cout属于ostream输出流类型
+ostream &operator<<(ostream &cout, Person &p) //本质   operator<<(cout,p)  简化  cout<<p
+{
+    cout << "m_a= " << p.m_a << "m_b=" << p.m_b << endl;
+    return cout;
+}
+void test01()
+{
+    Person p(10, 10); //有参构造的调用
+    // p.m_a = 10;
+    // p.m_b = 10;
+    // cout << p.m_a << endl;
+    // cout << p.m_b << endl;
+    cout << p << endl;
+
+    int main()
+    {
+
+        test01();
+
+        system("pause");
+        return 0;
+    }
+</code></pre>
+<ul>
+<li>重载左移运算符配合友元可以实现输出自定义数据类型</li>
+</ul>
+<h4 id="4-5-3-递增运算符重载"><a href="#4-5-3-递增运算符重载" class="headerlink" title="4.5.3 递增运算符重载"></a>4.5.3 递增运算符重载</h4><p>通过重载递增运算符，实现自己的整型数据</p>
+<ul>
+<li>为什么成员函数重载使用时不需要传参</li>
+</ul>
+<p>==因为采用成员函数进行重载时，对象会调用这个函数，也就是说这个operator函数是对象本身的内容，因此并不需要额外再传递一个参数==</p>
+<p> ==但是使用全局函数时则需要传递参数==</p>
+<p>类的非静态成员变量返回对象本身，用return * this</p>
+<ul>
+<li>前置递增返回的时引用，后置递增返回的是值</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//重载递增运算符
+
+//自定义整形
+class myinteger
+{
+    friend ostream &operator<<(ostream &cout, myinteger myint);
+
+public:
+    myinteger() //构造函数初始化
+    {
+        m_num = 0;
+    }
+    //重载前置++运算符
+    //这个函数是类的成员函数，因此不用传参，直接可以对类内数据进行操作
+    //这里为什么不需要传参
+    //因为采用成员函数进行重载是，对象会调用这个函数，也就是说这个operator函数是对象本身的内容，因此并不需要额外再传递一个参数
+    //但是使用全局函数时则需要传递参数
+    // this指针指向这个对象，不需要传参用它本身就好
+    myinteger &operator++()
+    {
+        m_num++;
+        //再将自身做返回
+        return *this;
+    }
+    //重载后置++运算符
+    //返回值类型不可以作为重载的条件
+    //后置递增这里用了一个temp来记录递增之前的值，而不是直接返回原来的数的引用，但这里确实不可以再进行链式操作了
+    //因为返回来的对象不是原来的对象，再对temp进行temp++的操作递增的时temp 并不是myint,完全不需要链式运算了
+    myinteger operator++(int) //int 代表一个占位参数，可以区分前置和后置递增，只认int
+    {
+
+        //先  记录一下当下结果
+        myinteger temp = *this;
+
+        //后  递增
+        m_num++;
+
+        //最后将记录的结果做返回
+        //返回的对象是一个值，因为局部变量函数调用完就释放了   引用的话就执行非法操作了
+        return temp;
+    }
+
+private:
+    int m_num;
+};
+//重载<<(左运算符)运算符
+ostream &operator<<(ostream &cout, myinteger myint)
+{
+    cout << myint.m_num;
+    return cout;
+}
+void test01()
+{
+    myinteger myint;
+    cout << ++(++myint) << endl;
+    cout << myint << endl;
+}
+
+void test02()
+{
+    myinteger myint;
+    cout << myint++ << endl;
+    cout << myint << endl;
+}
+
+int main()
+{
+
+    //test01();
+    test02();
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="4-5-4-赋值运算符重载"><a href="#4-5-4-赋值运算符重载" class="headerlink" title="4.5.4 赋值运算符重载"></a>4.5.4 赋值运算符重载</h4><p>c++编译器至少给一个类添加4个函数</p>
+<ul>
+<li><p>默认构造函数（无参，函数体为空）</p>
+</li>
+<li><p>默认析构函数（无参，函数体为空）</p>
+</li>
+<li><p>默认拷贝构造函数，对属性进行值拷贝</p>
+</li>
+<li><p>赋值运算符operator=，对属性进行值拷贝</p>
+</li>
+</ul>
+<p>如果类中有属性指向堆区，做赋值操作时也会出现深浅拷贝问题</p>
+<p><img src="/2021/06/25/c-xue-xi-2-0-he-xin-bian-cheng/Users\X_Bruce\AppData\Roaming\Typora\typora-user-images\image-20210521135537645.png" alt="image-20210521135537645"></p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//赋值运算符重载
+
+class Person
+{
+
+public:
+    Person(int age)
+    {
+        m_age = new int(age);
+    }
+    //在析构函数中释放堆区的数据
+    //堆区的内存重复释放了
+    ~Person()
+    {
+        if (m_age != NULL)
+        {
+            delete m_age;
+            m_age = NULL;
+        }
+    }
+    //重载赋值运算符
+    Person &operator=(Person &p) //返回自身的引用
+    {
+        //编译器提供浅拷贝
+
+        //应该先判断是否有属性在堆区，如果有先释放干净，然后再深拷贝
+        //这时必须要释放内存，因为此时是赋值，不是之前的拷贝构造了，所有只有清空了指针的内容，才可以赋值新的内容进去
+        if (m_age != NULL)
+        {
+            delete m_age;
+            m_age = NULL;
+        }
+        //深拷贝
+        m_age = new int(*p.m_age);
+
+        //返回对象本身
+        return *this;
+    }
+    int *m_age;
+};
+void test01()
+{
+    Person p1(19);
+    Person p2(20);
+    Person p3(20);
+    p3 = p2 = p1; //赋值操作
+    cout << "p1的年龄为:" << *p1.m_age << endl;
+    cout << "p2的年龄为:" << *p2.m_age << endl;
+    cout << "p3的年龄为:" << *p3.m_age << endl;
+}
+int main()
+{
+
+    test01();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="4-5-5-关系运算符重载"><a href="#4-5-5-关系运算符重载" class="headerlink" title="4.5.5 关系运算符重载"></a>4.5.5 关系运算符重载</h4><p>重载关系运算符，可以让两个自定义类型对象进行对比操作</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//重载关系运算符
+
+class Person
+{
+public:
+    Person(string name, int age) //构造函数进行初始化
+    {
+        m_name = name;
+        m_age = age;
+    }
+
+    //重载关系运算符"=="号
+    bool operator==(Person &p)
+    {
+        if (this->m_age == p.m_age && this->m_name == p.m_name)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    bool operator!=(Person &p)
+    {
+        if (this->m_age == p.m_age && this->m_name == p.m_name)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    string m_name;
+    int m_age;
+};
+void test01()
+{
+    Person p1("tom", 18);
+    Person p2("jerry", 18);
+
+    if (p1 == p2) //重载这个等号
+    {
+        cout << "p1和p2是相等的" << endl;
+    }
+    else
+    {
+        cout << "p1和p2是不相等的" << endl;
+    }
+
+    if (p1 != p2) //重载这个等号
+    {
+        cout << "p1和p2是不相等的" << endl;
+    }
+    else
+    {
+        cout << "p1和p2是相等的" << endl;
+    }
+}
+
+int main()
+{
+
+    test01();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="4-5-6-函数调用运算符重载"><a href="#4-5-6-函数调用运算符重载" class="headerlink" title="4.5.6 函数调用运算符重载"></a>4.5.6 函数调用运算符重载</h4><ul>
+<li>函数调用运算符（）也可以重载</li>
+<li>由于重载后使用的方式非常像函数的调用，一次称为仿函数</li>
+<li>仿函数没有固定写法，非常灵活</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//函数调用运算符重载
+
+class myprint
+{
+public:
+    //重载函数调用运算符
+    void operator()(string test)
+    {
+        cout << test << endl;
+    }
+};
+void myprint02(string test)
+{
+    cout << test << endl;
+}
+
+void test01()
+{
+    myprint mp;
+    mp("hello world");        //使用了重载之后的小括号，由于使用起来非常类似函数调用，因此称为仿函数
+    myprint02("hello world"); //函数调用
+}
+//仿函数非常灵活，没有固定写法
+//加法类
+class myadd
+{
+public:
+    int operator()(int num1, int num2)
+    {
+        return num1 + num2;
+    }
+};
+void test02()
+{
+    myadd mdd;
+    int ret = mdd(100, 100);
+    cout << "ret = " << ret << endl;
+    //匿名函数对象
+    //如果不想创建对象，就可以使用匿名函数对象
+    cout << myadd()(100, 100) << endl;
+}
+
+int main()
+{
+    //test01();
+    test02();
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h3 id="4-6-继承"><a href="#4-6-继承" class="headerlink" title="4.6 继承"></a>4.6 继承</h3><p>继承是面向对象的三大特性之一</p>
+<p>我们在定义类的时候发现，下级别成员除了拥有上一级的共性，还有自己的特性，这个时候我们可以考虑利用继承的技术，减少代码的重复性</p>
+<h4 id="4-6-1-继承的基本语法"><a href="#4-6-1-继承的基本语法" class="headerlink" title="4.6.1 继承的基本语法"></a>4.6.1 继承的基本语法</h4><p><em>//继承实现页面</em></p>
+<p><em>//继承的好处，减少重复代码</em></p>
+<p><em>//语法： class 子类：继承方式 父类</em></p>
+<p><em>//子类  也称为  派生类</em></p>
+<p><em>//父类  也称为  基类</em></p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+//普通实现页面
+
+//java页面
+// class Java
+// {
+// public:
+//     void header()
+//     {
+
+//         cout << "首页、公开课、登录、注册...（公共头部）" << endl;
+//     }
+//     void footer()
+//     {
+
+//         cout << "帮助中心、交流合作、站内地图...（公共底部）" << endl;
+//     }
+//     void left()
+//     {
+
+//         cout << "Java、python、c++、...（公共分类列表）" << endl;
+//     }
+//     void content()
+//     {
+//         cout << "Java学科视频" << endl;
+//     }
+// };
+// //Python页面
+// class Python
+// {
+// public:
+//     void header()
+//     {
+
+//         cout << "首页、公开课、登录、注册...（公共头部）" << endl;
+//     }
+//     void footer()
+//     {
+
+//         cout << "帮助中心、交流合作、站内地图...（公共底部）" << endl;
+//     }
+//     void left()
+//     {
+
+//         cout << "Java、python、c++、...（公共分类列表）" << endl;
+//     }
+//     void content()
+//     {
+//         cout << "Python学科视频" << endl;
+//     }
+// };
+// //C++页面
+// class Cp
+// {
+// public:
+//     void header()
+//     {
+
+//         cout << "首页、公开课、登录、注册...（公共头部）" << endl;
+//     }
+//     void footer()
+//     {
+
+//         cout << "帮助中心、交流合作、站内地图...（公共底部）" << endl;
+//     }
+//     void left()
+//     {
+
+//         cout << "Java、python、c++、...（公共分类列表）" << endl;
+//     }
+//     void content()
+//     {
+//         cout << "C++学科视频" << endl;
+//     }
+// };
+
+//继承实现页面
+//继承的好处，减少重复代码
+//语法：  class  子类：继承方式  父类
+//子类   也称为   派生类
+//父类   也称为    基类
+class basepage
+{
+public:
+    void header()
+    {
+
+        cout << "首页、公开课、登录、注册...（公共头部）" << endl;
+    }
+    void footer()
+    {
+
+        cout << "帮助中心、交流合作、站内地图...（公共底部）" << endl;
+    }
+    void left()
+    {
+
+        cout << "Java、python、c++、...（公共分类列表）" << endl;
+    }
+};
+//Java页面
+class Java : public basepage
+{
+public:
+    void content()
+    {
+        cout << "Java学科视频" << endl;
+    }
+};
+//Python页面
+class Python : public basepage
+{
+public:
+    void content()
+    {
+        cout << "Python学科视频" << endl;
+    }
+};
+//C++页面
+class Cpp : public basepage
+{
+public:
+    void content()
+    {
+        cout << "C++学科视频" << endl;
+    }
+};
+void test01()
+{
+    cout << "Java下载视频的页面如下：" << endl;
+    Java ja;
+    ja.header();
+    ja.footer();
+    ja.left();
+    ja.content();
+
+    cout << "---------------------------" << endl;
+    cout << "Python下载视频的页面如下：" << endl;
+    Python py;
+    py.header();
+    py.footer();
+    py.left();
+    py.content();
+
+    cout << "---------------------------" << endl;
+    cout << "C++下载视频的页面如下：" << endl;
+    Cpp cp;
+    cp.header();
+    cp.footer();
+    cp.left();
+    cp.content();
+}
+int main()
+{
+
+    test01();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<p>继承的好处：==可以减少重复代码==</p>
+<p>class A: public B;</p>
+<p>A类称为子类或者派生类</p>
+<p>B类称为父类或者基类</p>
+<p><strong>派生类中的成员，包含两大部分：</strong></p>
+<p>一类是从基类继承过来的，一类是自己增加的成员</p>
+<p>从基类继承过来的变现其共性，而新增的成员体现个性</p>
+<h4 id="4-6-2-继承方式"><a href="#4-6-2-继承方式" class="headerlink" title="4.6.2 继承方式"></a>4.6.2 继承方式</h4><p>继承的语法：<code>class 子类：继承方式   父类</code></p>
+<p>继承方式一共有三种：</p>
+<ul>
+<li><p>公有继承</p>
+</li>
+<li><p>私有继承</p>
+</li>
+<li><p>保护继承</p>
+</li>
+</ul>
+<p><img src="/2021/06/25/c-xue-xi-2-0-he-xin-bian-cheng/Users\X_Bruce\AppData\Roaming\Typora\typora-user-images\image-20210521184134502.png" alt="image-20210521184134502"></p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+//继承方式
+//公共继承
+class base1
+{
+public:
+    int m_a;
+
+protected:
+    int m_b;
+
+private:
+    int m_c;
+};
+class son : public base1
+{
+public:
+    void fun()
+    {
+        m_a = 10; //父类中公共权限成员到子类中依然是公共权限
+        m_b = 10; //父类中保护权限成员到子类中依然是保护权限
+                  // m_c = 10;//父类中私有权限成员到子类中访问不到
+    }
+};
+void test01()
+{
+    son s1;
+    s1.m_a = 100;
+    //s1.m_b = 100;//到son中   m_b是保护权限类型   访问不到
+}
+// 保护继承
+class base2
+{
+public:
+    int m_a;
+
+protected:
+    int m_b;
+
+private:
+    int m_c;
+};
+class son2 : protected base2
+{
+public:
+    void fun()
+    {
+        m_a = 10; //父类中公共权限成员到子类中是保护权限
+        m_b = 10; //父类中保护权限成员到子类中依然是保护权限
+                  // m_c = 10;//父类中私有权限成员到子类中访问不到
+    }
+};
+void test02()
+{
+    son2 s2;
+    // s2.m_a = 100;//在son2中保护权限，类外访问不到
+    //s1.m_b = 100;//到son2中   m_b是保护权限类型   访问不到
+}
+// 私有继承
+class base3
+{
+public:
+    int m_a;
+
+protected:
+    int m_b;
+
+private:
+    int m_c;
+};
+class son3 : private base3
+{
+public:
+    void fun()
+    {
+       // m_a = 10; //父类中公共权限成员到子类中是私有权限
+        //m_b = 10; //父类中保护权限成员到子类中是私有权限
+                  // m_c = 10;//父类中私有权限成员到子类中访问不到
+    }
+};
+class grangson3 : public son3
+{
+public:
+    void fun()
+    {
+       // m_a = 100; //不管用什么方法都访问不到了
+    }
+};
+void test03()
+{
+    son3 s3;
+    // s3.m_a = 100;//在son3中私有权限，类外访问不到
+    //s3.m_b = 100;//到son3中   m_b是私有权限类型   访问不到
+}
+int main()
+{
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="4-6-3-继承中的对象模型"><a href="#4-6-3-继承中的对象模型" class="headerlink" title="4.6.3 继承中的对象模型"></a>4.6.3 继承中的对象模型</h4><p>从父类继承过来的成员，哪些属于子类对象中？</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//继承中的对象模型
+class base
+{
+public:
+    int m_a;
+
+protected:
+    int m_b;
+
+private:
+    int m_c;//只是被编译器隐藏了，但是还是会被继承下去
+};
+class son : public base
+{
+public:
+    int m_d;
+};
+//利用开发人员命令提示工具查看对象模型
+//跳转盘符
+//跳转文件路径  cd 具体路径下
+//查看命名
+// c1/d1  reportSingleClassLayout类名  文件名
+void test01()
+{
+    //在父类中所有的非静态的成员属性都会被子类继承下去
+    //父类中私有的成员属性是被编译器给隐藏了，因此是访问不到，但是确实被继承下来了
+    cout << "size of son =" << sizeof(son) << endl; //结果为16
+    cout << "size of base=" << sizeof(base) << endl;
+}
+int main()
+{
+
+    test01();
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="4-6-4-继承中的构造和析构顺序"><a href="#4-6-4-继承中的构造和析构顺序" class="headerlink" title="4.6.4 继承中的构造和析构顺序"></a>4.6.4 继承中的构造和析构顺序</h4><p>子类继承父类后，当创建子类对象时，也会调用父类的构造函数</p>
+<p>那么父类和子类的构造和析构顺序是谁先谁后呢</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//继承中的构造和析构顺序
+class base
+{
+public:
+    base()
+    {
+        cout << "base构造函数！" << endl;
+    }
+    ~base()
+    {
+        cout << "base析构函数！" << endl;
+    }
+};
+class son : public base
+{
+public:
+    son()
+    {
+        cout << "son构造函数！" << endl;
+    }
+    ~son()
+    {
+        cout << "son析构函数！" << endl;
+    }
+};
+void test01() //栈区先进后出
+{
+    //base b;
+    //继承中的构造和析构顺序如下：
+    //先构造父类，再构造子类，析构的顺序和构造的顺序相反
+    son s1;
+}
+int main()
+{
+
+    test01();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="4-6-5-继承同名成员处理方式"><a href="#4-6-5-继承同名成员处理方式" class="headerlink" title="4.6.5 继承同名成员处理方式"></a>4.6.5 继承同名成员处理方式</h4><p>当子类与父类出现同名的成员，如何通过子类对象，访问到子类或父类中同名的数据</p>
+<ul>
+<li>子类访问子类同名数据   直接访问即可</li>
+<li>子类访问父类同名成员   需要加作用域</li>
+<li>当子类与父类拥有同名的成员函数时，子类会隐藏父类中的同名成员函数，加作用域就可以访问到父类中的同名函数</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//继承中同名成员的处理方式
+class base
+{
+public:
+    base()
+    {
+        m_a = 100;
+    }
+    void fun()
+    {
+        cout << "base - fun()函数调用" << endl;
+    }
+    //发生了函数重载
+    void fun(int a)
+    {
+        cout << "base - fun(int a)函数调用" << endl;
+    }
+    int m_a;
+};
+class son : public base
+{
+public:
+    son()
+    {
+        m_a = 200;
+    }
+    void fun()
+    {
+        cout << "son - fun()函数调用" << endl;
+    }
+
+    int m_a;
+};
+//同名成员属性的处理方式
+void test01()
+{
+    son s;
+    // base b;
+    cout << "son下的m_a=" << s.m_a << endl;
+    //    cout << "base下的m_a=" << b.m_a << endl;
+    //如果通过子类对象访问到父类中的同名成员，需要加作用域
+    cout << "base下的m_a=" << s.base::m_a << endl;
+}
+//同名成员函数的处理
+void test02()
+{
+    son s;
+    s.fun(); //直接调用，调用的是子类中的同名成员函数
+    //如何调用父类中的同名成员呢？
+    s.base::fun(); //加上作用域即可调用父类的
+    //如果子类中出现了和父类同名的成员函数，子类的同名成员会隐藏掉父类中所有的同名成员
+    //s.fun(100);
+    //如果想访问到父类中被隐藏的同名成员函数，需要加作用域
+    s.base::fun(100);
+}
+int main()
+{
+    //test01();
+    test02();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="4-6-6-继承同名静态成员处理方式"><a href="#4-6-6-继承同名静态成员处理方式" class="headerlink" title="4.6.6 继承同名静态成员处理方式"></a>4.6.6 继承同名静态成员处理方式</h4><p>继承中同名的静态成员再子类对象上如何进行访问</p>
+<p>静态成员和非静态成员出现同名，处理方式一致</p>
+<ul>
+<li>访问子类同名成员   直接访问即可</li>
+<li>访问父类同名成员   需要加作用域</li>
+</ul>
+<p>静态成员变量的特点：</p>
+<ul>
+<li><p>所有对象都共享同一份数据</p>
+</li>
+<li><p>编译阶段就分配内存</p>
+</li>
+<li><p>类内声明，类外初始化</p>
+</li>
+</ul>
+<p>静态成员函数的特点：</p>
+<ul>
+<li>只能访问静态成员变量，不能访问非静态成员变量</li>
+<li>所有成员都共享同一份函数实例</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//继承中的同名静态成员处理方式
+class base
+{
+public:
+    static int m_a; //类内声明
+    static void fun()
+    {
+        cout << "base-static void fun()函数的调用" << endl;
+    }
+};
+int base::m_a = 100; //类外初始化
+class son : public base
+{
+public:
+    static int m_a;
+    static void fun()
+    {
+        cout << "son-static void fun()函数的调用" << endl;
+    }
+};
+int son::m_a = 200;
+
+//同名静态成员属性
+void test01()
+{
+    //1、通过对象来访问数据
+    cout << "通过对象来访问" << endl;
+    son s;
+    cout << "son下的m_a=" << s.m_a << endl;
+    cout << "base下的m_a=" << s.base::m_a << endl; //加个作用域
+    //2、通过类名来访问数据
+    cout << "通过类名来访问" << endl;
+    cout << "son下的 m_a = " << son::m_a << endl;   //类名的方法
+    cout << "base下的 m_a = " << base::m_a << endl; //类名的方法
+    //son通过类名的方式访问父类作用域下的m_a
+    //第一个::代表通过类名方式访问   第二个::代表访问父类作用域下
+    cout << "base下的 m_a = " << son::base::m_a << endl; //类名的方法
+}
+//同名静态成员函数
+void test02()
+{
+    //1、通过对象的方式访问
+    cout << "通过对象来访问" << endl;
+    son s;
+    s.fun();
+    s.base::fun();
+    //2、通过类名的方式访问
+    cout << "通过类名来访问" << endl;
+    base::fun();
+    //子类出现和父类同名静态成员函数，也会隐藏父类中的所有同名成员函数
+    //如果想访问父类中被隐藏的同名成员，需要加作用域
+    son::base::fun();
+}
+int main()
+{
+    //test01();
+    test02();
+    system("pause");
+    return 0;
+}
+</code></pre>
+<p><strong>总结</strong>：同名静态成员处理方式和非静态处理方式一样，只不过有两种访问方式（通过对象和通过类名）</p>
+<h4 id="4-6-7-多继承语法"><a href="#4-6-7-多继承语法" class="headerlink" title="4.6.7 多继承语法"></a>4.6.7 多继承语法</h4><p>C++允许一个类继承多个类</p>
+<p>语法：<code>class  子类：继承方式   父类1，继承方式    父类2....</code></p>
+<p>多继承可能会引发父类中有同名成员出现，需要加作用域区分</p>
+<p>C++实际开发中不建议使用多继承</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+class base1
+{
+public:
+    base1()
+    {
+        m_a = 100;
+    }
+    int m_a;
+};
+class base2
+{
+public:
+    base2()
+    {
+        m_a = 200;
+    }
+    int m_a;
+};
+//子类  需要继承base1和base2
+//语法： class 子类  ：继承方式  父类1，继承方式  父类2...
+class son : public base1, public base2
+{
+public:
+    son()
+    {
+        m_c = 300;
+        m_d = 400;
+    }
+    int m_c;
+    int m_d;
+};
+void test01()
+{
+    son s;
+    cout << "sizeof son = " << sizeof(s) << endl;
+    //当父类中出现同名成员，需要加作用域区分
+    cout << "base1::m_a= " << s.base1::m_a << endl;
+    cout << "base2::m_a= " << s.base2::m_a << endl;
+}
+
+int main()
+{
+    test01();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<p>==多继承中如果父类中出现了同名情况，子类使用的时候需要加作用域==</p>
+<h4 id="4-6-8-菱形继承"><a href="#4-6-8-菱形继承" class="headerlink" title="4.6.8 菱形继承"></a>4.6.8 菱形继承</h4><p>菱形继承的概念：</p>
+<ul>
+<li>两个派生类继承同一个基类</li>
+<li>又有某个类同事继承着两个派生类</li>
+<li>这种继承方式称为菱形继承，或者钻石继承</li>
+</ul>
+<p>底层<code>vbptr</code>指针：指向<code>vbtable</code>(一个虚基类表)</p>
+<ul>
+<li><code>v-virtual</code>(虚类)</li>
+<li><code>b-base</code>(基类)</li>
+<li><code>ptr-pointer</code>(指针)</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+//动物类
+class animal
+{
+public:
+    int m_age;
+};
+//利用虚继承  可以解决菱形继承问题
+//在继承之前加关键字virtual 变为虚继承
+//animal类称为虚基类
+//羊类
+class sheep : virtual public animal
+{
+};
+//骆驼类
+class tuo : virtual public animal
+{
+};
+//羊驼类
+class sheeptuo : public sheep, public tuo
+{
+};
+void test01()
+{
+    sheeptuo s;
+    s.sheep::m_age = 18;
+    s.tuo::m_age = 19;
+    //当出现菱型继承的时候，两个父类拥有相同的数据，需要加作用域区分
+    cout << " s.sheep::m_age =" << s.sheep::m_age << endl;
+    cout << " s.tuo::m_age" << s.tuo::m_age << endl;
+    //不会出现不明确的情况了
+    cout << s.m_age << endl;
+    //这份数据我们知道只要有一份就可以了，菱型继承导致数据有两份，资源浪费
+}
+int main()
+{
+    test01();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<ul>
+<li>菱形继承带来的主要问题时子类继承两份相同的数据，导致资源浪费以及毫无意义</li>
+<li>利用虚继承可以解决菱形继承问题</li>
+</ul>
+<h3 id="4-7-多态"><a href="#4-7-多态" class="headerlink" title="4.7 多态"></a>4.7 多态</h3><h4 id="4-7-1-多态的基本概念"><a href="#4-7-1-多态的基本概念" class="headerlink" title="4.7.1 多态的基本概念"></a>4.7.1 多态的基本概念</h4><p><strong>多态是C++面向对象三大特性之一</strong></p>
+<p>多态分为两类</p>
+<ul>
+<li><p>静态多态：函数重载和运算符重载属于静态多态，复用函数名</p>
+</li>
+<li><p>动态多态：派生类和虚函数实现运行时多态</p>
+</li>
+</ul>
+<p>静态多态和动态多态区别：</p>
+<ul>
+<li><p>静态多态的函数地址早绑定 - 编译阶段确定函数地址</p>
+</li>
+<li><p>动态多态的函数地址晚绑定 - 运行阶段确定函数地址</p>
+</li>
+</ul>
+<p>动态多态满足条件</p>
+<ul>
+<li>得有继承关系</li>
+<li>子类要重写(返回值类型相同，函数名相同，形参列表相同)父类的虚函数==virtual==关键字可写可不写</li>
+<li>父类中要加==virtual==关键字</li>
+</ul>
+<p>动态多态的使用</p>
+<ul>
+<li>父类的指针或者引用指向子类的对象</li>
+</ul>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+//多态
+//动物类
+class animal
+{
+public:
+    //虚函数
+    virtual void speak() //之后就会执行地址晚绑定了
+    {
+        cout << "动物在说话" << endl;
+    }
+};
+//猫类
+class cat : public animal
+{
+public:
+    void speak()
+    {
+        cout << "小猫在说话" << endl;
+    }
+};
+//狗类
+class dog : public animal
+{
+public:
+    void speak()
+    {
+        cout << "小狗在说话" << endl;
+    }
+};
+//执行说话的函数
+//地址早绑定  在编译阶段就确定了函数的地址
+//形参时animal引用   实参时cat
+//如果想让执行猫说话，那么这个函数地址皆不能提前绑定，需要在运行阶段进行绑定，地址晚绑定
+//加入虚函数之后，传入哪个对象就是哪种形态了
+
+void dospeak(animal &animal) //animal & animal = cat父类的引用指向接收子类的对象
+{
+    animal.speak(); //运行父子之间的类型转换
+}
+void test01()
+{
+    cat cat;
+    dospeak(cat);
+}
+void test02()
+{
+    dog dog;
+    dospeak(dog);
+}
+
+int main()
+{
+    // test01();
+    test02();
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h4 id="4-7-2-多态的原理剖析"><a href="#4-7-2-多态的原理剖析" class="headerlink" title="4.7.2 多态的原理剖析"></a>4.7.2 多态的原理剖析</h4><p>当子类重写了父类的虚函数</p>
+<p>子类中的虚函数表  内部 会替换成  子类的虚函数地址</p>
+<p>当父类的指针或引用指向子类对象是，就发生了多态</p>
+<pre class=" language-c++"><code class="language-c++">animal & animal = cat
+    animal.speak
+会从cat的虚函数表中调用
+</code></pre>
+<p>本质：父类中由于加入了<code>virtual</code>关键字，类的内部发生了结构的改变，多了一个虚函数表指针<code>vfptr</code>指向了一个虚函数表<code>vftable</code>,虚函数的内部记录着虚函数的入口地址，当子类重写了虚函数的时候，它会把自身的虚函表中的函数给替换掉，替换成子类的函数，所以当用父类的指针或者引用指向子类对象时由于本身还是一个子类的对象，当调用公共的<code>cpu</code>接口时它会从子类的虚函数表中找到子类的确实的入口地址，记下来就会指向子函数里的重新给函数的内容，就发生了多态</p>
+<p><img src="/2021/06/25/c-xue-xi-2-0-he-xin-bian-cheng/Users\X_Bruce\AppData\Roaming\Typora\typora-user-images\image-20210524110102196.png" alt="image-20210524110102196"></p>
+<h4 id="4-7-3-多态案例–-计算器类"><a href="#4-7-3-多态案例–-计算器类" class="headerlink" title="4.7.3 多态案例– 计算器类"></a>4.7.3 多态案例– 计算器类</h4><p>分别利用普通写法和多态技术，设计实现两个操作数进行运算的计算机类</p>
+<p>多态的优点：</p>
+<ul>
+<li>代码组织结构清晰</li>
+<li>可读性强</li>
+<li>利于前期和后期的扩展以及维护</li>
+</ul>
+<p>==普通写法==</p>
+<pre class=" language-c++"><code class="language-c++">#include <iostream>
+#include <string>
+using namespace std;
+
+//分别利用普通写法和多态技术实现计算器
+//普通写法
+class calculator
+{
+public:
+    int getresult(string oper)
+    {
+        if (oper == "+")
+        {
+            return m_num1 + m_num2;
+        }
+        else if (oper == "-")
+        {
+            return m_num1 - m_num2;
+        }
+        else if (oper == "*")
+        {
+            return m_num1 * m_num2;
+        }
+        else if (oper == "/")
+        {
+            return m_num1 / m_num2;
+        }
+    }
+
+    int m_num1;
+    int m_num2;
+};
+void test01()
+{
+    //创建一个计算机对象
+    calculator c;
+    c.m_num1 = 1;
+    c.m_num2 = 1;
+    cout << "两数相加的结果为：" << c.m_num1 << "+" << c.m_num2 << "=" << c.getresult("+") << endl;
+}
+int main()
+{
+    test01();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<p>如果想扩展新的功能，需要修改源码</p>
+<p>在真实的开发中，提倡一种开闭原则</p>
+<p>开闭原则：对扩展进行开放，对修改进行关闭</p>
+<p>==多态编写==</p>
+<h2 id="五、职工管理系统"><a href="#五、职工管理系统" class="headerlink" title="五、职工管理系统"></a>五、职工管理系统</h2><h3 id="5-1、菜单功能"><a href="#5-1、菜单功能" class="headerlink" title="5.1、菜单功能"></a>5.1、菜单功能</h3><p>在workermanager.cpp里面编写menu菜单.h文件里声明，.cpp文件里实现</p>
+<pre class=" language-c++"><code class="language-c++">#include"workermanager.h"
+workermanager::workermanager()
+{
+}
+void workermanager::show_menu()
+{
+    cout << "*********************************************" << endl;
+    cout << "*************欢迎使用职工管理系统************" << endl;
+    cout << "*************** 0.退出管理程序***************" << endl;
+    cout << "*************** 1.增加职工信息***************" << endl;
+    cout << "*************** 2.显示职工信息***************" << endl;
+    cout << "*************** 3.删除离职职工***************" << endl;
+    cout << "*************** 4.修改职工信息***************" << endl;
+    cout << "*************** 5.查找职工信息***************" << endl;
+    cout << "*************** 6.按照编号排序***************" << endl;
+    cout << "*************** 7.清空所以文档***************" << endl;
+    cout << "*********************************************" << endl;
+    cout << endl;
+}
+workermanager::~workermanager()
+{
+}
+</code></pre>
+<p>在main函数里面调用menu</p>
+<pre class=" language-c++"><code class="language-c++">#include<iostream>
+using namespace std;
+#include"workermanager.h"
+
+
+int main()
+{
+    //实例化管理对象
+    workermanager wm;
+
+    //调用展示菜单成员函数
+    wm.show_menu();
+
+
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<h3 id="5-2-推迟功能"><a href="#5-2-推迟功能" class="headerlink" title="5.2 推迟功能"></a>5.2 推迟功能</h3><h4 id="5-2-1-提供功能接口"><a href="#5-2-1-提供功能接口" class="headerlink" title="5.2.1 提供功能接口"></a>5.2.1 提供功能接口</h4><p>在main函数中提供分支选择，提供每个功能接口</p>
+<pre class=" language-c++"><code class="language-c++">int main()
+{
+    //实例化管理对象
+    workermanager wm;
+    //用来存储用户选项
+    int choice = 0;
+    while (1)
+    {
+        //调用展示菜单成员函数
+        wm.show_menu();
+        cout << "请输入你的选择：" << endl;
+        cin >> choice;
+        switch (choice)
+        {
+        case 0: //退出系统
+            wm.exitsystem();
+            break;
+        case 1:    //增加职工
+            break;
+        case 2:    //显示职工
+            break;
+        case 3:    //删除职工
+            break;
+        case 4:    //修改职工
+            break;
+        case 5:    //查找职工
+            break;
+        case 6:    //排序职工
+            break;
+        case 7:    //清空文档
+            break;
+        default:    //清屏
+            break;
+        }
+
+    }
+    
+
+
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+<p>在workermanager.h中加入了退出声明</p>
+<p><code>void exitsystem();</code></p>
+<p>在workermanager.cpp中加入了退出声明</p>
+<pre class=" language-c++"><code class="language-c++">void workermanager::exitsystem()
+{
+    cout << "欢迎下次使用" << endl;
+    system("pause");
+    exit(0);//退出程序
+}
+</code></pre>
+<h3 id="5-3-创建职工类"><a href="#5-3-创建职工类" class="headerlink" title="5.3 创建职工类"></a>5.3 创建职工类</h3><h4 id="5-3-1-创建职工抽象类"><a href="#5-3-1-创建职工抽象类" class="headerlink" title="5.3.1 创建职工抽象类"></a>5.3.1 创建职工抽象类</h4><p>==多态：一个接口有多种形态，由于创建的对象不同，显示的内容也不一样==</p>
+<p>==多文件编写：.h文件中写函数的声明，.cpp文件中写函数的实现（类内函数要加作用域）==</p>
+<p>职工的分类为：普通员工、经理、老板</p>
+<p>将三种职工抽象到一个类（worker）中，利用多态管理不同的职工种类</p>
+<p>职工的属性为：职工编号、职工姓名、职工所在的部门编号</p>
+<p>职工的行为：岗位职责信息描述，获取岗位名称</p>
+<p>头文件文件夹下创建worker.h文件并添加：</p>
+<pre class=" language-c++"><code class="language-c++">#pragma once
+#include<iostream>
+#include<string>
+using namespace std;
+
+
+//职工抽象类
+class worker
+{
+public:
+    //显示个人信息
+    virtual void  showinfo() = 0;//纯虚函数
+    //获取岗位名称
+    virtual string getdeptname() = 0;
+
+    int m_id;//职工编号
+    string m_name;//职工姓名
+    int m_deptid;//职工所在部门名称编号
+};
+</code></pre>
+<h4 id="5-3-2-创建普通员工类"><a href="#5-3-2-创建普通员工类" class="headerlink" title="5.3.2 创建普通员工类"></a>5.3.2 创建普通员工类</h4><p>普通员工类继承职工抽象类，并重写父类中纯虚函数</p>
+<p>在头文件和原文件的文件夹下分别创建employee.h和employee.cpp文件</p>
+<p>employee.h</p>
+<pre class=" language-c++"><code class="language-c++">//普通员工文件
+#pragma once
+#include<iostream>
+#include"worker.h"
+using namespace std;
+//只做声明
+
+
+class employee:public worker
+{
+public:
+    //构造函数
+    employee(int id,string name,int did);
+    //显示个人信息
+    virtual void  showinfo();//纯虚函数
+    //获取岗位名称
+    virtual string getdeptname();
+};
+
+</code></pre>
+<p>employee.cpp</p>
+<pre class=" language-c++"><code class="language-c++">#include"employee.h"
+#include<string>
+//构造函数
+employee::employee(int id, string name, int did)
+{
+    this->m_id = id;
+    this->m_name = name;
+    this->m_deptid = did;
+}
+//显示个人信息
+void  employee::showinfo()//纯虚函数
+{
+    cout << "职工的编号为：" << this->m_id
+        << "\t职工的姓名为：" << this->m_name
+        << "\t岗位：" << this->getdeptname()
+        << "\t岗位职责：完成经理交给的任务" << endl;
+}
+//获取岗位名称
+string employee::getdeptname()
+{
+    return string("员工");
+
+}
+</code></pre>
+<h4 id="5-3-3-创建经理类"><a href="#5-3-3-创建经理类" class="headerlink" title="5.3.3 创建经理类"></a>5.3.3 创建经理类</h4><p>经理类继承职工抽象类，并重写父类中纯虚函数，和普通员工类似</p>
+<p>在头文件和源文件下分别创建manager.h和manager.cpp文件</p>
+<p>manager.h</p>
+<pre class=" language-c++"><code class="language-c++">#pragma once
+#include<iostream>
+using namespace std;
+#include"worker.h"
+
+
+class manager:public worker
+{
+public:
+    //构造函数
+    manager(int id,string name,int did);
+    //显示个人信息
+    virtual void  showinfo();//纯虚函数
+    //获取岗位名称
+    virtual string getdeptname();
+    
+
+
+};
+
+</code></pre>
+<p>manager.cpp</p>
+<pre class=" language-c++"><code class="language-c++">#include"employee.h"
+#include<string>
+//构造函数
+employee::employee(int id, string name, int did)
+{
+    this->m_id = id;
+    this->m_name = name;
+    this->m_deptid = did;
+}
+//显示个人信息
+void  employee::showinfo()//纯虚函数
+{
+    cout << "职工的编号为：" << this->m_id
+        << "\t职工的姓名为：" << this->m_name
+        << "\t岗位：" << this->getdeptname()
+        << "\t岗位职责：完成经理交给的任务" << endl;
+}
+//获取岗位名称
+string employee::getdeptname()
+{
+    return string("员工");
+
+}
+</code></pre>
+<h4 id="5-3-4-创建老板类"><a href="#5-3-4-创建老板类" class="headerlink" title="5.3.4 创建老板类"></a>5.3.4 创建老板类</h4><p>老板类继承职工抽象类，并重写父类中的纯虚函数，和普通员工类似</p>
+<p>在头文件和源文件的文件夹下分别创建boss.h和boss.cpp文件</p>
+<p>boss.h</p>
+<pre class=" language-c++"><code class="language-c++">#pragma once
+#include<iostream>
+using namespace std;
+#include"worker.h"
+
+
+class boss :public worker
+{
+    //重写父类中的纯虚函数
+public:
+    //构造函数
+    boss(int id, string name, int did);
+    //显示个人信息
+    virtual void  showinfo();//纯虚函数
+                             //获取岗位名称
+    virtual string getdeptname();
+
+};
+</code></pre>
+<p>boss.cpp</p>
+<pre class=" language-c++"><code class="language-c++">#include"boss.h"
+#include<string>
+
+
+//构造函数
+boss::boss(int id, string name, int did)
+{
+    this->m_id = id;
+    this->m_name = name;
+    this->m_deptid = did;
+
+}
+//显示个人信息
+void  boss::showinfo()//纯虚函数
+{
+    cout << "职工的编号为：" << this->m_id
+        << "\t职工的姓名为：" << this->m_name
+        << "\t岗位：" << this->getdeptname()
+        << "\t岗位职责：管理公司所有事务" << endl;
+}
+                         //获取岗位名称
+string boss::getdeptname()
+{
+    return string("老板");
+}
+</code></pre>
+<h3 id="5-4-测试多态"><a href="#5-4-测试多态" class="headerlink" title="5.4 测试多态"></a>5.4 测试多态</h3><p>在职工管理系统.cpp中添加测试函数，并且运行能够产生多态</p>
+<pre class=" language-c++"><code class="language-c++">//测试代码
+    worker * worker = NULL;//指针必须要初始化，防止野指针
+    worker = new employee(1,"张三",1);
+    worker->showinfo();//运用到了多态
+    delete worker;
+
+    worker = new manager(2, "李四",2);
+    worker->showinfo();
+    delete worker;
+
+    worker = new boss(3, "王五", 3);
+    worker->showinfo();
+    delete worker;
+</code></pre>
+<h3 id="5-5-添加职工"><a href="#5-5-添加职工" class="headerlink" title="5.5 添加职工"></a>5.5 添加职工</h3><p>批量添加职工，并且保存到文件中</p>
+<h4 id="5-5-1-功能分析"><a href="#5-5-1-功能分析" class="headerlink" title="5.5.1 功能分析"></a>5.5.1 功能分析</h4><p>使用者在批量创建时，可能会创建不同种类的职工</p>
+<p>如果想将所有不同种类的员工都放入同一个数组中，可以将所有员工的指针维护到一个数组里</p>
+<p>如果想在程序中维护这个不定长度的数组，可以将数组创建到堆取，并利用worker**的指针维护</p>
+<p>利用多态：父类的指针可以指向子类的对象，可以管控不同类型的指针</p>
+<p><img src="/2021/06/25/c-xue-xi-2-0-he-xin-bian-cheng/vs2015\1.JPG" alt="1"></p>
+<p>一个一级指针可以指向一个普通的一维数组，那么一个二级指针就可以指向一个一维指针数组</p>
+<p>work * [5]是一个数组指针，它指向数组中每个元素地址，但要对这个数组地址进行修改就要再加一个指针指向它就是worker **</p>
+<p>父类指针很指向子类对象，然后把父类指针用数组记录下来，就是二级指针的作用</p>
+<h4 id="5-5-2-功能实现"><a href="#5-5-2-功能实现" class="headerlink" title="5.5.2 功能实现"></a>5.5.2 功能实现</h4><p>在workermanager.h头文件中添加成员属性代码：</p>
+<pre class=" language-c++"><code class="language-c++">#include"worker.h"
+#include"employee.h"
+#include"manager.h"
+#include"boss.h"
+</code></pre>
+<p>在workermanager构造函数中初始化属性</p>
+<pre class=" language-c++"><code class="language-c++">workermanager::workermanager()
+{
+    //初始化属性
+    this->m_empnum = 0;//一开始额职工数为0
+    this->m_emparry = NULL;//指针指向为空
+}
+</code></pre>
+<p>在workermanager.h中添加成员函数</p>
+<pre class=" language-c++"><code class="language-c++">    //记录职工人数
+    int m_empnum;
+    //职工数组指针
+    worker **m_emparry;
+    //添加职工
+    void add_emp();
+</code></pre>
+<p>workermanager.cpp中实现该函数</p>
+<pre class=" language-c++"><code class="language-c++">void workermanager::add_emp()
+{
+    cout << "请输入添加职工的数量：" << endl;
+    int addnum = 0;//保存用户的输入数量
+    cin >> addnum;
+    if (addnum>0)
+    {
+        //添加
+        //计算一下添加新空间大小
+        //新空间人数 = 原来空间人数 + 新增人数
+        int newsize = this->m_empnum + addnum;
+        //开辟新空间
+        worker **newspace = new worker *[newsize];//newspace用来管理父类指针
+        //将原来空间下的数，拷贝到新空间下
+        if (this->m_emparry!=NULL)
+        {
+            for (int i = 0; i < this->m_empnum; i++)
+            {
+                newspace[i] = this->m_emparry[i];
+            }
+        }
+        //批量添加新数据
+        for (int i = 0; i < addnum; i++)
+        {
+            int id;//职工编号
+            string name;//职工姓名
+            int dselect;//部门选择
+            cout << "请输入第" << i + 1 << "个新职工的编号为：" << endl;
+            cin >> id;
+            cout << "请输入第" << i + 1 << "个新职工的姓名为：" << endl;
+            cin >> name;
+            cout << "请选择该职工的岗位" << endl;
+            cout << "1、普通职工" << endl;
+            cout << "2、经理" << endl;
+            cout << "3、老板" << endl;
+            cin >> dselect;
+
+            worker * worker = NULL;
+            //父类指针指向子类的对象
+            switch (dselect)
+            {
+            case 1:
+                worker = new employee(id, name, 1);
+                break;
+            case 2:
+                worker = new manager(id, name, 2);
+                break;
+            case 3:
+                worker = new boss(id, name, 3);
+                break;
+            default:
+                break;
+            }
+            //将创建职工指针，保存到数组中
+            newspace[this->m_empnum + i] = worker;
+
+
+        }
+        //释放原有的空间
+        //这里只是释放了指针数组，对指针数组每个元素指向的空间并没有被释放掉
+        delete[] this->m_emparry;
+        //更改新空间的指向
+        this->m_emparry = newspace;
+        //更新新的职工人数
+        this->m_empnum = newsize;
+        //成功添加后保存到文件中
+        //提示添加成功
+        cout << "成功添加" << addnum << "名新职工" << endl;
+    }
+    else
+    {
+        cout << "你输入错误" << endl;
+    }
+    //按任意键后清屏回到上级目录
+    system("pause");
+    system("cls");
+}
+</code></pre>
+<h3 id="5-6-文件交互-写文件"><a href="#5-6-文件交互-写文件" class="headerlink" title="5.6 文件交互-写文件"></a>5.6 文件交互-写文件</h3><p>对文件进行读写：</p>
+<p>添加功能中，我们只是将所有的数据加入到内存中，一旦程序结束之后就无法保存了，因此文件管理中需要一个与文件进行交互的功能，对于文件进行读写操作</p>
+<h4 id="5-6-1-设定文件路径"><a href="#5-6-1-设定文件路径" class="headerlink" title="5.6.1 设定文件路径"></a>5.6.1 设定文件路径</h4><p>设定文件路径，在workermanager.h中添加宏常量，并且包含头文件fstream</p>
+<pre class=" language-c++"><code class="language-c++">#include<fstream>
+#define FILENAME "emplist.txt"
+</code></pre>
+<h4 id="5-6-2-成员函数声明"><a href="#5-6-2-成员函数声明" class="headerlink" title="5.6.2 成员函数声明"></a>5.6.2 成员函数声明</h4><p>在workermanager.h中类里添加成员函数<code>void save()</code></p>
+<pre class=" language-c++"><code class="language-c++">    //保存文件
+    void save();
+</code></pre>
+<h4 id="5-6-3-保存文件功能实现"><a href="#5-6-3-保存文件功能实现" class="headerlink" title="5.6.3 保存文件功能实现"></a>5.6.3 保存文件功能实现</h4><pre class=" language-c++"><code class="language-c++">//保存文件
+void workermanager::save()
+{
+    ofstream ofs;
+    ofs.open(FILENAME, ios::out);//用输出的方式打开文件 --写文件
+    //将每个人的数据写入到文件中
+    for (int i = 0; i < this->m_empnum; i++)
+    {
+        ofs << this->m_emparry[i]->m_id << " "
+            << this->m_emparry[i]->m_name << " "
+            << this->m_emparry[i]->m_deptid << endl;
+    }
+    //关闭文件
+    ofs.close();
+}
+</code></pre>
+<h3 id="5-7-文件交互-读文件"><a href="#5-7-文件交互-读文件" class="headerlink" title="5.7 文件交互-读文件"></a>5.7 文件交互-读文件</h3><p>将文件中的内容读取到程序中</p>
+<p>虽然实现了添加职工后保存到文件的操作，但是每次开始运行程序，并没有将文件中的数据读取到程序中，且程序功能中还有清空文件的需求，因此构造函数初始化数据的情况分为三种</p>
+<ul>
+<li><p>第一次使用，文件未创建</p>
+</li>
+<li><p>文件存在，但是数据被用户清空</p>
+</li>
+<li><p>文件存在，并且保存职工的所有数据</p>
+</li>
+</ul>
+<h4 id="5-7-1-文件未创建"><a href="#5-7-1-文件未创建" class="headerlink" title="5.7.1 文件未创建"></a>5.7.1 文件未创建</h4><p>在workermanager.h中添加新的成员属性m_filemplty标志文件是否为空</p>
+<pre class=" language-c++"><code class="language-c++">    //判断文件是否为空 标志
+    bool m_fileisempty;
+</code></pre>
+<p>修改workermanager.cpp中构造函数代码：</p>
+<pre class=" language-c++"><code class="language-c++">//1、文件不存在
+    ifstream ifs;
+    ifs.open(FILENAME, ios::in);//读文件
+    //判断文件是否存在
+    if(!ifs.is_open())
+    {
+        cout << "文件不存在" << endl;
+        //初始化属性
+        //初始化记录人数
+        this->m_empnum = 0;
+        //初始化数组指针
+        this->m_emparry = NULL;
+        //初始化文件是否为空
+        this->m_fileisempty = true;
+        ifs.close();
+        return;
+    }
+</code></pre>
+<h4 id="5-7-2-文件存在且数据为空"><a href="#5-7-2-文件存在且数据为空" class="headerlink" title="5.7.2 文件存在且数据为空"></a>5.7.2 文件存在且数据为空</h4><p>在workermanager.cpp中的构造函数追加代码：</p>
+<pre class=" language-c++"><code class="language-c++">//2、文件存在，数据为空
+    char ch;
+    ifs >> ch;//读走一个标识符
+    if (ifs.eof())//判断文件存在且没有数据
+    {
+        cout << "文件为空！" << endl;
+        this->m_empnum = 0;
+        this->m_fileisempty = true;
+        this->m_emparry = NULL;
+        ifs.close();
+        return;
+    }
+</code></pre>
+<p>成功添加职工后，应该更改文件不为空的标志</p>
+<p>在<code>void workermanager::add_emp()</code>成员函数中添加：</p>
+<pre class=" language-c++"><code class="language-c++">        this->m_fileisempty = false;
+        //成功添加后保存到文件中
+</code></pre>
+<h4 id="5-7-3-文件存在且保存职工数据"><a href="#5-7-3-文件存在且保存职工数据" class="headerlink" title="5.7.3 文件存在且保存职工数据"></a>5.7.3 文件存在且保存职工数据</h4><p>1、获取记录的职工人数</p>
+<p>在workermanager.h中添加成员函数<code>int  get_empnum();</code></p>
+<pre class=" language-c++"><code class="language-c++">    //统计文件中的人数
+    int get_empnum();
+</code></pre>
+<p>workermanager.cpp中实现</p>
+<pre class=" language-c++"><code class="language-c++">//统计文件中的人数
+int workermanager::get_empnum()
+{
+    ifstream ifs;
+    ifs.open(FILENAME, ios::in);//打开文件  读文件
+    int id;
+    string name;
+    int did;
+    int num = 0;
+    //流提取符>>会跳过输入流里的空格
+    //读文件，读到空格或者换行符就会停止，然后进行下一次读取
+    while (ifs>>id&&ifs>>name&&ifs>>did)//读数据，按行读
+    {
+        //统计人数变量
+        num++;
+    }
+    return num;
+
+}
+</code></pre>
+<p>在workermanager.cpp构造函数中继续追加代码：</p>
+<pre class=" language-c++"><code class="language-c++">    //3、文件存在，并且记录数据
+    int num = this->get_empnum();
+    cout << "职工人数为：" << num << endl;
+    this->m_empnum = num;
+</code></pre>
+<p>2、初始化数组</p>
+<p>根据职工的数据，初始化workermanager中的worker**m_emparray指针</p>
+<p>在workermanager.h中添加成员函数<code>void init_emp()</code>:</p>
+<pre class=" language-c++"><code class="language-c++">    //初始化职工
+    void init_emp();
+</code></pre>
+<p>在workermanager.cpp中实现：</p>
+<pre class=" language-c++"><code class="language-c++">void workermanager::init_emp()//将文件中的数据读入内存
+{
+    ifstream ifs;
+    ifs.open(FILENAME, ios::in);
+    int id;
+    string name;
+    int did;
+    int index = 0;
+    while (ifs>>id&&ifs>>name&&ifs>>did)
+    {
+        worker * worker = NULL;
+        if (did == 1)//普通员工
+        {
+            worker = new employee(id, name, did);
+        }
+        else if (did == 2)//经理
+        {
+            worker = new manager(id, name, did);
+        }
+        else //老板
+        {
+            worker = new boss(id, name, did);
+        }
+        this->m_emparry[index] = worker;
+        index++;
+    }
+    //关闭文件
+    ifs.close();
+
+}
+</code></pre>
+<p>在workermanager.cpp的构造函数中追加代码</p>
+<pre class=" language-c++"><code class="language-c++">//3、文件存在，并且记录数据
+    int num = this->get_empnum();
+//    cout << "职工人数为：" << num << endl;
+    this->m_empnum = num;
+
+    //先统计文件中有几个员工，再给数组开辟多大的内存，然后开始从文件中把数据读到数组中
+    //初始化职工，并且显示出来
+    //开辟空间 
+    this->m_emparry = new worker*[this->m_empnum];
+    //将文件中的数据，存到数组中
+    this->init_emp();
+    //测试代码
+    for (int i = 0; i < this->m_empnum; i++)
+    {
+        cout << "职工编号：" << this->m_emparry[i]->m_id
+            << "姓名：" << this->m_emparry[i]->m_name
+            << "部门编号：" << this->m_emparry[i]->m_deptid << endl; 
+    }
+</code></pre>
+<h3 id="5-8-显示职工"><a href="#5-8-显示职工" class="headerlink" title="5.8 显示职工"></a>5.8 显示职工</h3><p>显示当前所有职工信息</p>
+<h4 id="5-8-1-显示职工函数声明"><a href="#5-8-1-显示职工函数声明" class="headerlink" title="5.8.1 显示职工函数声明"></a>5.8.1 显示职工函数声明</h4><p>在workermanager.h中添加成员函数<code>void show_emp;</code></p>
+<pre class=" language-c++"><code class="language-c++">    //显示职工
+    void show_emp();
+</code></pre>
+<h4 id="5-8-2-显示职工函数实现"><a href="#5-8-2-显示职工函数实现" class="headerlink" title="5.8.2 显示职工函数实现"></a>5.8.2 显示职工函数实现</h4><p>在workermanager.cpp中实现成员函数<code>void show_emp;</code></p>
+<pre class=" language-c++"><code class="language-c++">//显示职工
+void workermanager::show_emp()
+{
+    //判断文件是否为空
+    if (this->m_fileisempty)
+    {
+        cout << "文件不存在或记录为空" << endl;
+    }
+    else
+    {
+        for (int i = 0; i < this->m_empnum; i++)
+        {
+            //利用多态调用程序接口
+            this->m_emparry[i]->showinfo();
+        }
+    }
+    //按任意键清屏
+    system("pause");
+    system("cls");
+}
+</code></pre>
+<h3 id="5-9-删除职工"><a href="#5-9-删除职工" class="headerlink" title="5.9 删除职工"></a>5.9 删除职工</h3><p>按照职工的变化进行删除职工操作</p>
+<h4 id="5-9-1-删除职工函数声明"><a href="#5-9-1-删除职工函数声明" class="headerlink" title="5.9.1 删除职工函数声明"></a>5.9.1 删除职工函数声明</h4><p>在workermanager.h中添加成员函数<code>void del_emp();</code></p>
+<pre class=" language-c++"><code class="language-c++">    //删除职工
+    void del_emp();
+</code></pre>
+<h4 id="5-9-2-职工是否存在函数声明"><a href="#5-9-2-职工是否存在函数声明" class="headerlink" title="5.9.2 职工是否存在函数声明"></a>5.9.2 职工是否存在函数声明</h4><p>很多功能都需要用到根据职工是否存在来进行操作如：删除职工、修改职工、查找职工</p>
+<p>因此添加该公告函数，以便后续调用</p>
+<p>在workermanager.h中添加成员函数<code>int  isexist(int);</code></p>
+<pre class=" language-c++"><code class="language-c++">//判断职工是否存在  如果存在返回职工所在数组中的位置，不存在返回-1
+    int isexist(int id);
+</code></pre>
+<h4 id="5-9-3-职工是否存在函数实现"><a href="#5-9-3-职工是否存在函数实现" class="headerlink" title="5.9.3 职工是否存在函数实现"></a>5.9.3 职工是否存在函数实现</h4><p>在workermanger.cpp中实现成员函数<code>int isexist(inr id)</code></p>
+<pre class=" language-c++"><code class="language-c++">//判断职工是否存在  如果存在返回职工所在数组中的位置，不存在返回-1
+int workermanager::isexist(int id)
+{
+    int index = -1;
+    for (int i = 0; i < this->m_empnum; i++)
+    {
+        if (this->m_emparry[i]->m_id == id)
+        {
+            //找到职工
+            index = i;
+            break;
+        }
+    }
+    return index;
+}
+</code></pre>
+<h4 id="5-9-4-删除职工函数实现"><a href="#5-9-4-删除职工函数实现" class="headerlink" title="5.9.4 删除职工函数实现"></a>5.9.4 删除职工函数实现</h4><p>delete是释放内存，不是删除数组</p>
+<p>在workermanger.cpp中实现成员函数<code>void workermanager::del_emp()</code></p>
+<pre class=" language-c++"><code class="language-c++">//删除职工
+void workermanager::del_emp()
+{
+    if (this->m_fileisempty)
+    {
+        cout << "文件不存在或记录为空" << endl;
+    }
+    else
+    {
+        //按照职工编号进行删除
+        cout << "请输入想要删除的职工编号：" << endl;
+        int id = 0;
+        cin >> id;
+        int index = this->isexist(id);
+        if (index!=-1)//说明职工存在，并且要删除掉index位置上的职工
+        {
+            for (int i = index; i < this->m_empnum-1; i++)
+            {
+                //数据前移
+                this->m_emparry[i] = this->m_emparry[i + 1];
+            }
+            this->m_empnum--;//更新下数组中记录人员个数
+            //数据同步更新到文件中
+            this->save();
+            cout << "删除成功" << endl;
+        }
+        else
+        {
+            cout << "删除失败，未找到该职工" << endl;
+        }
+    }
+    //按任意键清屏
+    system("pause");
+    system("cls");
+
+}
+</code></pre>
+<h3 id="5-10-修改职工"><a href="#5-10-修改职工" class="headerlink" title="5.10 修改职工"></a>5.10 修改职工</h3><p>按照职工的编号对职工信息进行修改并保存</p>
+<h4 id="5-10-1-修改职工函数声明"><a href="#5-10-1-修改职工函数声明" class="headerlink" title="5.10.1 修改职工函数声明"></a>5.10.1 修改职工函数声明</h4><p>在workermanager.h中添加成员函数<code>void mod_emp();</code></p>
+<pre class=" language-c++"><code class="language-c++">    //修改职工
+    void mod_emp();
+</code></pre>
+<h4 id="5-10-2-修改职工函数实现"><a href="#5-10-2-修改职工函数实现" class="headerlink" title="5.10.2 修改职工函数实现"></a>5.10.2 修改职工函数实现</h4><p>在workermanager.cpp中添加成员函数<code>void mod_emp();</code></p>
+<pre class=" language-c++"><code class="language-c++">因为指针的指向没有变，所以该职工对应的岗位和岗位职责就不会变
+//修改职工
+void workermanager::mod_emp()
+{
+    if (this->m_fileisempty)
+    {
+        cout << "文件不存在或记录为空" << endl;
+
+    }
+    else
+    {
+        cout << "请输入修改职工的编号" << endl;
+        int id;
+        cin >> id;
+        int ret = this->isexist(id);
+        if(ret!=-1)
+        {
+            //查找到编号的职工
+            //清空堆区为了替换
+            //不能直接覆盖，类型可能就变了
+            delete this->m_emparry[ret];
+            int newid = 0;
+            string newname = "";
+            int dselect = 0;
+
+            cout << "查到：" << id << "号员工，请输入新职工号：" << endl;
+            cin >> newid;
+
+            cout << "请输入新姓名：" << endl;
+            cin >> newname;
+
+            cout << "请输入岗位：" << endl;
+            cout << "1、普通职工" << endl;
+            cout << "2、经理" << endl;
+            cout << "3、老板" << endl;
+            cin >> dselect;
+            worker * worker = NULL;
+            switch (dselect)
+            {
+            case 1:
+                worker = new employee(newid, newname, dselect);
+                break;
+            case 2:
+                worker = new manager(newid, newname, dselect);
+                break;
+            case 3:
+                worker = new boss(newid, newname, dselect);
+                break;
+            default:
+                break;
+            }
+            //更新数据到数组中
+            this->m_emparry[ret] = worker;
+            cout << "修改成功！" << endl;
+            //数据保存到文件中
+            this->save();
+        }
+        else
+        {
+            cout << "修改失败，查无成人" << endl;
+        }
+    }
+    //按任意键清屏
+    system("pause");
+    system("cls");
+}
+</code></pre>
+<h3 id="5-11-查找职工"><a href="#5-11-查找职工" class="headerlink" title="5.11 查找职工"></a>5.11 查找职工</h3><p>提供两种查找职工的方式，一种按照职工编号，一种按照职工姓名</p>
+<h4 id="5-11-1-查找职工函数声明"><a href="#5-11-1-查找职工函数声明" class="headerlink" title="5.11.1 查找职工函数声明"></a>5.11.1 查找职工函数声明</h4><p>在workermanager.h中添加成员函数<code>void find_emp()</code></p>
+<pre class=" language-c++"><code class="language-c++">    // 查找职工
+    void find_emp();
+</code></pre>
+<h4 id="5-11-2-查找职工函数实现"><a href="#5-11-2-查找职工函数实现" class="headerlink" title="5.11.2 查找职工函数实现"></a>5.11.2 查找职工函数实现</h4><p>在workermanager.cpp中实现成员函数<code>void find_emp()</code></p>
+<pre class=" language-c++"><code class="language-c++">// 查找职工
+void workermanager::find_emp()
+{
+    if (this->m_fileisempty)
+    {
+        cout << "文件不存在或者记录为空：" << endl;
+
+    }
+    else
+    {
+        cout << "请输入你要选择的查找方式" << endl;
+        cout << "1、按照编号查找" << endl;
+        cout << "2、按照姓名查找" << endl;
+        int select = 0;
+        cin >> select;
+        //按照职工编号查找
+        if (select == 1)
+        {
+            int id;
+            cout << "请输入查找的职工编号" << endl;
+            cin >> id;
+            int ret = isexist(id);//返回在数组中的位置
+            if (ret != -1)
+            {
+                cout << "查找成功，该职工信息如下：" << endl;
+                this->m_emparry[ret]->showinfo();
+
+            }
+            else
+            {
+                cout << "查找失败，查无此人" << endl;
+            }
+
+        }
+        //按照姓名查找
+        else if (select == 2)
+        {
+            string name;
+            cout << "请输入要查找的姓名：" << endl;
+            cin >> name;
+            int ret = stexist(name);//返回在数组中的位置
+            if (ret != -1)
+            {
+                cout << "查找成功，该职工信息如下：" << endl;
+                this->m_emparry[ret]->showinfo();
+
+            }
+            else
+            {
+                cout << "查找失败，查无此人" << endl;
+            }
+
+
+
+        }
+    }
+    //清屏操作
+    system("pause");
+    system("cls");
+
+}
+</code></pre>
+<h3 id="5-12-排序"><a href="#5-12-排序" class="headerlink" title="5.12 排序"></a>5.12 排序</h3><p>按照职工编号进行排序，排序的顺序由用户指定</p>
+<h4 id="5-12-1-排序函数声明"><a href="#5-12-1-排序函数声明" class="headerlink" title="5.12.1 排序函数声明"></a>5.12.1 排序函数声明</h4><p>在workermanager.h中添加成员函数<code>void sort_emp</code></p>
+<pre class=" language-c++"><code class="language-c++">    //按照编号排序
+    void sort_emp();
+</code></pre>
+<h4 id="5-12-2-排序函数实现"><a href="#5-12-2-排序函数实现" class="headerlink" title="5.12.2 排序函数实现"></a>5.12.2 排序函数实现</h4><p>在workermanager.cpp中添加成员函数<code>void sort_emp</code></p>
+<pre class=" language-c++"><code class="language-c++">//按照编号排序
+void workermanager::sort_emp()
+{
+    if (this->m_fileisempty)
+    {
+        cout << "文件不存在或记录为空" << endl;
+        system("pause");
+        system("cls");
+    }
+    else
+    {
+        cout << "请选择排序方式：" << endl;
+        cout << "1、按照工号进行升序" << endl;
+        cout << "2、按照工号进行降序" << endl;
+        int select = 0;
+        cin >> select;
+        for (int i = 0; i < m_empnum; i++)
+        {
+            int minormax = i;//声明最小值或最大值下标
+            for (int j = i; j < this->m_empnum; j++)
+            {
+                if ((select == 1 ))//升序
+                {
+                    if (this->m_emparry[minormax]->m_id > this->m_emparry[j]->m_id)
+                    {
+                        minormax = j;
+                    }
+                }
+                else //降序
+                {
+                    if (this->m_emparry[minormax]->m_id < this->m_emparry[j]->m_id)
+                    {
+                        minormax = j;
+                    }
+                }
+                
+            }
+            
+            //判断一开始认定的最小值或最大值是不是计算的最小值或最大值，如果不是，交换数据
+            if (i!=minormax)
+            {
+                worker * temp = this->m_emparry[i];
+                this->m_emparry[i] = this->m_emparry[minormax];
+                this->m_emparry[minormax] = temp;
+            }
+        }
+
+        cout << "排序成功！排序后的结果为：" << endl;
+        this->save();//排序后结果保存在文件中
+        this->show_emp();//展示所有职工
+    }
+
+}
+</code></pre>
+<h3 id="5-13-清空文件"><a href="#5-13-清空文件" class="headerlink" title="5.13 清空文件"></a>5.13 清空文件</h3><p>将文件中记录数据清空</p>
+<h4 id="5-13-1-清空函数声明"><a href="#5-13-1-清空函数声明" class="headerlink" title="5.13.1 清空函数声明"></a>5.13.1 清空函数声明</h4><p>在workermanager.h中添加成员函数</p>
+<pre class=" language-c++"><code class="language-c++">    //清空文件
+    void clean_file();
+</code></pre>
+<h4 id="5-13-2-清空函数实现"><a href="#5-13-2-清空函数实现" class="headerlink" title="5.13.2 清空函数实现"></a>5.13.2 清空函数实现</h4><pre class=" language-c++"><code class="language-c++">//清空文件
+void workermanager::clean_file()
+{
+    cout << "确定清空吗？" << endl;
+    cout << "1、确定" << endl;
+    cout << "2、返回" << endl;
+    int  select = 0;
+    cin >> select;
+    if (select == 1)
+    {
+        //清空文件
+        ofstream ofs(FILENAME,ios::trunc);//删除文件后重新创建
+        ofs.close();
+        if (this->m_emparry !=NULL)
+        {
+            //删除堆区的每个职工对象
+            for (int i = 0; i < this->m_empnum; i++)
+            {
+                delete this->m_emparry[i];
+                this->m_emparry[i] = NULL;
+            }
+            //删除堆区数组指针
+            delete[] this->m_emparry;
+            this->m_emparry = NULL;
+            this->m_empnum = 0;
+            this->m_fileisempty = true;
+        }
+
+        cout << "清空成功" << endl;
+
+    }
+    system("pause");
+    system("cls");
+
+}
+</code></pre>
+<blockquote>
+<p>至此，程序任务与功能已全部完成，核心编程部分告一段落！！！</p>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">xuyanbo</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://x-bruce1573.github.io/2021/06/25/c-xue-xi-2-0-he-xin-bian-cheng/">https://x-bruce1573.github.io/2021/06/25/c-xue-xi-2-0-he-xin-bian-cheng/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">xuyanbo</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
+                                </a>
+                            
+                                <a href="/tags/markdown/">
+                                    <span class="chip bg-color">markdown</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/06/25/c-xue-xi-2-0-he-xin-bian-cheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="菜鸟程序员内功心法--C++（核心编程）">
+                        
+                        <span class="card-title">菜鸟程序员内功心法--C++（核心编程）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    编程语言
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                    <a href="/tags/markdown/">
+                        <span class="chip bg-color">markdown</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/06/01/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="基于虚拟机的Ubuntu网络连接解决方案">
+                        
+                        <span class="card-title">基于虚拟机的Ubuntu网络连接解决方案</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-category">
+                                    解决方案
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Ubuntu/">
+                        <span class="chip bg-color">Ubuntu</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+                        <span class="chip bg-color">虚拟机</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: XuYanBo<br />'
+            + '文章作者: xuyanbo<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">xuyanbo</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">3k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/X-bruce1573" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1031676968@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1031676968" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1031676968" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
