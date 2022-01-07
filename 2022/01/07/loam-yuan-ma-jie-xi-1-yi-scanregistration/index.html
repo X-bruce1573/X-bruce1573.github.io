@@ -1,0 +1,1884 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="LOAM源码解析1一scanRegistration, xuyanbo,github">
+    <meta name="description" content="举个栗子">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>LOAM源码解析1一scanRegistration | XuYanBo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">XuYanBo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">XuYanBo</div>
+        <div class="logo-desc">
+            
+            举个栗子
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/X-bruce1573" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/X-bruce1573" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">LOAM源码解析1一scanRegistration</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
+                            </a>
+                        
+                            <a href="/tags/LOAM/">
+                                <span class="chip bg-color">LOAM</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/SLAM/" class="post-category">
+                                SLAM
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-01-07
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    24 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>鉴于工作和学习需要，学习了激光<code>salm</code>算法<code>loam</code>，并阅读了作者的原版论文，现将学习过程中的理解与一些源码剖析记录整理下来，也是对于学习<code>slam</code>的阶段性总结!!!</p>
+</blockquote>
+<h1 id="一、综述"><a href="#一、综述" class="headerlink" title="一、综述"></a>一、综述</h1><p><a href="https://link.zhihu.com/?target=https://www.ri.cmu.edu/pub_files/2014/7/Ji_LidarMapping_RSS2014_v8.pdf">LOAM</a>这篇论文是发表于2014年RSS的文章，全称为：LOAM: Lidar Odometry and Mapping in Real-time . LOAM是基于激光雷达而搭建的在ROS平台下的SLAM系统，一共分为scanRegistration提取特征点、laserOdometry 10HZ估计位姿、laserMapping 1HZ构建三维地图transforMaintenance 位姿优化等四个模块。</p>
+<p>本文对今天对第一部分Point Clond Registration模板，scanRegistration.cpp进行分析，主要完成的工作有：对点云和IMU数据预处理、对接收的点云数据划分到不同线中存储、特征点（边缘点+平面点）提取等。</p>
+<h1 id="二、scanRegistration-cpp"><a href="#二、scanRegistration-cpp" class="headerlink" title="二、scanRegistration.cpp"></a>二、scanRegistration.cpp</h1><blockquote>
+<p>从main函数开始 在ros中订阅了2个话题，发布了6个话题。两个主要的回调函数：laserCloudHandler、imuHandler分别处理点云和IMU数据。其中，最主要的是laserCloudHandler回调函数。</p>
+</blockquote>
+<h2 id="2-1-main函数"><a href="#2-1-main函数" class="headerlink" title="2.1 main函数"></a>2.1 main函数</h2><pre class=" language-c++"><code class="language-c++">int main(int argc, char** argv)
+{
+  //ros::init(argc, argv, "scanRegistration");
+  ros::init(argc, argv, "scanRegistration");
+  ros::NodeHandle nh;
+//2个订阅者，6个发布者
+ /*
+   * 参数1：话题名称    
+   * 参数2：信息队列长度    
+   * 参数3：回调函数，每当一个信息到来的时候，这个函数会被调用    
+   * 返回一个ros::Subscriber类的对象，当此对象的所有引用都被销毁是，本节点将不再是该话题的订阅者 
+   */  
+  ros::Subscriber subLaserCloud = nh.subscribe<sensor_msgs::PointCloud2> 
+                                  ("/velodyne_points", 2, laserCloudHandler);//订阅雷达数据
+
+  ros::Subscriber subImu = nh.subscribe<sensor_msgs::Imu> ("/imu/data", 50, imuHandler);订阅imu数据
+/*
+   * 我们通过advertise() 函数指定我们如何在给定的topic上发布信息
+   * 它会触发对ROS master的调用，master会记录话题发布者和订阅者
+   * 在advertise()函数执行之后，master会通知每一个订阅此话题的节点
+   * 两节点间由此可以建立直接的联系
+   * advertise()会返回一个Publisher对象，使用这个对象的publish方法我们就可以在此话题上发布信息
+   * 当返回的Publisher对象的所有引用都被销毁的时候，本节点将不再是该话题的发布者
+   * 此函数是一个带模板的函数，需要传入具体的类型进行实例化
+   * 传入的类型就是要发布的信息的类型，在这里是String
+   * 第一个参数是话题名称
+   * 第二个参数是信息队列的长度，相当于信息的一个缓冲区
+   * 在我们发布信息的速度大于处理信息的速度时
+   * 信息会被缓存在先进先出的信息队列里
+   */
+  //指定发布者话题的对象
+  pubLaserCloud = nh.advertise<sensor_msgs::PointCloud2>
+                                 ("/velodyne_cloud_2", 2);//发布按线分类后的点云
+
+  pubCornerPointsSharp = nh.advertise<sensor_msgs::PointCloud2>
+                                        ("/laser_cloud_sharp", 2);//边界线上特殊点云
+
+  pubCornerPointsLessSharp = nh.advertise<sensor_msgs::PointCloud2>
+                                            ("/laser_cloud_less_sharp", 2);
+
+  pubSurfPointsFlat = nh.advertise<sensor_msgs::PointCloud2>
+                                       ("/laser_cloud_flat", 2);//面上特征点云
+
+  pubSurfPointsLessFlat = nh.advertise<sensor_msgs::PointCloud2>
+                                           ("/laser_cloud_less_flat", 2);
+
+  pubImuTrans = nh.advertise<sensor_msgs::PointCloud2> ("/imu_trans", 5);//发布imu处理数据
+
+  ros::spin();//每执行一次一直等待处理回调函数
+
+  return 0;
+}
+</code></pre>
+<h2 id="2-2-回调函数-laserCloudHandler"><a href="#2-2-回调函数-laserCloudHandler" class="headerlink" title="2.2 回调函数 laserCloudHandler"></a>2.2 回调函数 laserCloudHandler</h2><blockquote>
+<p>主要包括以下内容：</p>
+<p>1、点云预处理：过滤无效点、计算起始和终止点的方位角 2、<strong>根据每个点的仰角将点划入不同线中</strong>，共16线，记录线束号和获取的相对时间（也就是代码中的intensity，这个不是强度） 3、使用IMU数据插值计算点云中点的位置，消除由于非匀速运动造成的运动畸变 4、计算所有点的曲率，剔除两类点 5、<strong>提取边缘点和平面点</strong> 6、ROS发布消息</p>
+</blockquote>
+<pre class=" language-c++"><code class="language-c++">/*
+对接受到的点云进行预处理，完成分类
+将点云划入不同的线性存储；对其进行特征分类
+*/
+void laserCloudHandler(const sensor_msgs::PointCloud2ConstPtr& laserCloudMsg)
+{
+//-------------------1、点云预处理-----------------------//  
+  if (!systemInited) {
+    systemInitCount++;
+    if (systemInitCount >= systemDelay) {
+      //延时作用，保证imu有数据后再调用该回调函数
+      systemInited = true;
+    }
+    return;//不满足条件到此处就不往下执行了，最下面的也不会执行了，直接跳出回调函数
+  }
+  //N_SCANS（16）保存每一点的起始与终止索引
+  std::vector<int> scanStartInd(N_SCANS, 0);//定义了16个整形变量，每个变量的初值为1
+  std::vector<int> scanEndInd(N_SCANS, 0);
+  //雷达的时间戳
+  double timeScanCur = laserCloudMsg->header.stamp.toSec();
+  pcl::PointCloud<pcl::PointXYZ> laserCloudIn;
+  //转化为模板点云
+  pcl::fromROSMsg(*laserCloudMsg, laserCloudIn);
+  std::vector<int> indices;
+  //去除无效点
+  pcl::removeNaNFromPointCloud(laserCloudIn, laserCloudIn, indices);
+  int cloudSize = laserCloudIn.points.size();
+  //计算点云的起始角度与终止角度
+  //atan2的范围是[-180,180]，atan的范围是[-90,90]
+  //扫描开始点的旋转角,atan2范围[-pi,+pi],计算旋转角时取负号是因为velodyne是顺时针旋转
+  float startOri = -atan2(laserCloudIn.points[0].y, laserCloudIn.points[0].x);
+  float endOri = -atan2(laserCloudIn.points[cloudSize - 1].y,
+                        laserCloudIn.points[cloudSize - 1].x) + 2 * M_PI;
+/*将起止角度差值约束到pi-3pi之间*/
+  if (endOri - startOri > 3 * M_PI) {
+    endOri -= 2 * M_PI;
+  } else if (endOri - startOri < M_PI) {
+    endOri += 2 * M_PI;
+  }
+//-----------------2、根据角度将点划入不同的线中------------------//  
+/*
+遍历所有点，计算点的仰角，根据仰角过滤16线以外的点，并为每个点分配激光线号scanID
+根据点云中点旋转角度和整个周期旋转角度的比率获得相对时间relTime，并获得点强度（线号+点相对时间）
+根据扫描线是否过半，选择与起始位置还是终止位置进行差值计算，从而进行补偿
+*/
+  bool halfPassed = false;//为了判断雷达扫描的点是否过半
+  int count = cloudSize;
+  PointType point;//承载雷达数据点的数据类型
+  std::vector<pcl::PointCloud<PointType> > laserCloudScans(N_SCANS);//存储16线点云的vector，根据仰角排列激光线号，velodyne每两个scan之间间隔2度
+  //遍历所有点，计算每个点的角度
+  for (int i = 0; i < cloudSize; i++) {
+    // 雷达坐标系是x向前，y向左，z向上
+    // 机器坐标系为z向前，x向左，y向上
+    point.x = laserCloudIn.points[i].y;
+    point.y = laserCloudIn.points[i].z;
+    point.z = laserCloudIn.points[i].x;
+    //计算点的仰角，过滤16线以外的点
+    float angle = atan(point.y / sqrt(point.x * point.x + point.z * point.z)) * 180 / M_PI;
+    int scanID;//每个id里面都有不止一个角
+    int roundedAngle = int(angle + (angle<0.0?-0.5:+0.5)); //针对仰角进行四舍五入
+    if (roundedAngle > 0){
+      scanID = roundedAngle;
+    }
+    else {
+      scanID = roundedAngle + (N_SCANS - 1);
+    }
+    //过滤点，只挑选[-15度，+15度]范围内的点,scanID属于[0,15]，剔除16线以外的杂点。
+    if (scanID > (N_SCANS - 1) || scanID < 0 ){
+      count--;
+      continue;
+    }
+    // 3.根据扫描线是否旋转过半，选择与起始位置还是终止位置进行差值计算，从而进行补偿
+    float ori = -atan2(point.x, point.z);//（0--2pi）
+    //如果没有旋转过半
+    if (!halfPassed) {
+      //确保-pi/2 < ori - startOri < 3*pi/2
+      if (ori < startOri - M_PI / 2) {
+        ori += 2 * M_PI;
+      } else if (ori > startOri + M_PI * 3 / 2) {
+        ori -= 2 * M_PI;
+      }
+
+      if (ori - startOri > M_PI) {
+        halfPassed = true;
+      }
+    
+    }
+    //如果旋转过半 
+    else {
+      ori += 2 * M_PI;//先加2*pi
+    //确保-3*pi/2 < ori - endOri < pi/2
+      if (ori < endOri - M_PI * 3 / 2) {
+        ori += 2 * M_PI;
+      } else if (ori > endOri + M_PI / 2) {
+        ori -= 2 * M_PI;
+      } 
+    }
+    //点云中点的相对时间:点旋转的角度与整个周期旋转角度的比率, -0.5 < relTime < 1.5
+    float relTime = (ori - startOri) / (endOri - startOri);
+    //点强度=线号+点相对时间（即一个整数+一个小数，整数部分是线号scanID，小数部分是该点的相对时间）
+    //匀速扫描：根据当前扫描的角度和扫描周期计算相对扫描起始位置的时间
+    point.intensity = scanID + scanPeriod * relTime;// scanPeriod 扫描一圈0.1s
+// -----------------3、使用IMU数据进行插值计算点云的中点的位置，消除由于非匀速运动造成的运动畸变----------------//
+    if (imuPointerLast >= 0) {//当imu有数据时
+      float pointTime = relTime * scanPeriod;//当前激光点的偏移时间=激光点相对时间所占比例*周期
+      while (imuPointerFront != imuPointerLast) {
+        //点时间=当前点云时间戳+当前激光点的偏移时间
+        //寻找是否有点云时间<imu的时间戳
+        if (timeScanCur + pointTime < imuTime[imuPointerFront]) {
+          break;
+        }
+        imuPointerFront = (imuPointerFront + 1) % imuQueLength;
+      }
+      //当前激光点的time大于找到的对应惯导数据的time,则惯导数据采用当前值
+      if (timeScanCur + pointTime > imuTime[imuPointerFront]) {
+        imuRollCur = imuRoll[imuPointerFront];
+        imuPitchCur = imuPitch[imuPointerFront];
+        imuYawCur = imuYaw[imuPointerFront];
+
+        imuVeloXCur = imuVeloX[imuPointerFront];
+        imuVeloYCur = imuVeloY[imuPointerFront];
+        imuVeloZCur = imuVeloZ[imuPointerFront];
+
+        imuShiftXCur = imuShiftX[imuPointerFront];
+        imuShiftYCur = imuShiftY[imuPointerFront];
+        imuShiftZCur = imuShiftZ[imuPointerFront];
+      
+      }
+      //找到了点云时间戳小于IMU时间戳的IMU位置,则该点必处于imuPointerBack和imuPointerFront之间
+      //据此线性插值（根据距离分配比重），计算点云点的速度，位移和欧拉角 
+      else {
+        int imuPointerBack = (imuPointerFront + imuQueLength - 1) % imuQueLength;
+        //按时间距离计算权重分配比率
+        float ratioFront = (timeScanCur + pointTime - imuTime[imuPointerBack]) 
+                         / (imuTime[imuPointerFront] - imuTime[imuPointerBack]);
+        float ratioBack = (imuTime[imuPointerFront] - timeScanCur - pointTime) 
+                        / (imuTime[imuPointerFront] - imuTime[imuPointerBack]);
+
+        imuRollCur = imuRoll[imuPointerFront] * ratioFront + imuRoll[imuPointerBack] * ratioBack;
+        imuPitchCur = imuPitch[imuPointerFront] * ratioFront + imuPitch[imuPointerBack] * ratioBack;
+        if (imuYaw[imuPointerFront] - imuYaw[imuPointerBack] > M_PI) {
+          imuYawCur = imuYaw[imuPointerFront] * ratioFront + (imuYaw[imuPointerBack] + 2 * M_PI) * ratioBack;
+        } else if (imuYaw[imuPointerFront] - imuYaw[imuPointerBack] < -M_PI) {
+          imuYawCur = imuYaw[imuPointerFront] * ratioFront + (imuYaw[imuPointerBack] - 2 * M_PI) * ratioBack;
+        } else {
+          imuYawCur = imuYaw[imuPointerFront] * ratioFront + imuYaw[imuPointerBack] * ratioBack;
+        }
+        //更新速度和偏移量
+        imuVeloXCur = imuVeloX[imuPointerFront] * ratioFront + imuVeloX[imuPointerBack] * ratioBack;
+        imuVeloYCur = imuVeloY[imuPointerFront] * ratioFront + imuVeloY[imuPointerBack] * ratioBack;
+        imuVeloZCur = imuVeloZ[imuPointerFront] * ratioFront + imuVeloZ[imuPointerBack] * ratioBack;
+
+        imuShiftXCur = imuShiftX[imuPointerFront] * ratioFront + imuShiftX[imuPointerBack] * ratioBack;
+        imuShiftYCur = imuShiftY[imuPointerFront] * ratioFront + imuShiftY[imuPointerBack] * ratioBack;
+        imuShiftZCur = imuShiftZ[imuPointerFront] * ratioFront + imuShiftZ[imuPointerBack] * ratioBack;
+      }
+      //如果是第一个点,记住点云起始位置的速度，位移，欧拉角
+      if (i == 0) {
+        imuRollStart = imuRollCur;
+        imuPitchStart = imuPitchCur;
+        imuYawStart = imuYawCur;
+
+        imuVeloXStart = imuVeloXCur;
+        imuVeloYStart = imuVeloYCur;
+        imuVeloZStart = imuVeloZCur;
+
+        imuShiftXStart = imuShiftXCur;
+        imuShiftYStart = imuShiftYCur;
+        imuShiftZStart = imuShiftZCur;
+      }
+      //计算之后每个点相对于第一个点的由于加减速非匀速运动产生的位移、速度畸变，并对点云中的每个点位置信息重新补偿矫正
+      // Lidar位移、速度转移到IMU起始坐标系下 
+      else {
+        //当不为初始值时，去除imu加速度造成运动畸变的影响
+        ShiftToStartIMU(pointTime);//相对于原始点的位移畸变
+        VeloToStartIMU();//相对于原始点的位移畸变
+        TransformToStartIMU(&point);//减去非匀速位移畸变的值
+      }
+    }
+    //接着将激光点存入laserCloudScans对应的scanID中，从而完成按线分类工作。按照线号从小到大
+    //通过laserCloud指针将N_SCANS线的激光数据组成pcl点云
+    laserCloudScans[scanID].push_back(point);//将每个补偿矫正的点放入对应线号的容器中
+  }
+  cloudSize = count;
+//------------------------4、计算所有点的曲率、剔除两类点-------------------------//
+//1、被斜面挡住的点   2、入射角平面与激光平行的点
+//特征点的提取，通过遍历每个点与相邻10个点坐标（除了前五个和后五个）差值的平方来代表曲率，计算各点曲率并找到所有线的起点终点位置
+  pcl::PointCloud<PointType>::Ptr laserCloud(new pcl::PointCloud<PointType>());
+  for (int i = 0; i < N_SCANS; i++) {
+    *laserCloud += laserCloudScans[i];//将所有的点按照线号从小到大放入一个容器
+  }
+  int scanCount = -1;
+  //1针对按线分类后的点云，通过激光点左右各5个点进行曲率计算：
+  //该点与周围10个点的偏差
+  for (int i = 5; i < cloudSize - 5; i++) {
+    float diffX = laserCloud->points[i - 5].x + laserCloud->points[i - 4].x 
+                + laserCloud->points[i - 3].x + laserCloud->points[i - 2].x 
+                + laserCloud->points[i - 1].x - 10 * laserCloud->points[i].x 
+                + laserCloud->points[i + 1].x + laserCloud->points[i + 2].x
+                + laserCloud->points[i + 3].x + laserCloud->points[i + 4].x
+                + laserCloud->points[i + 5].x;
+    float diffY = laserCloud->points[i - 5].y + laserCloud->points[i - 4].y 
+                + laserCloud->points[i - 3].y + laserCloud->points[i - 2].y 
+                + laserCloud->points[i - 1].y - 10 * laserCloud->points[i].y 
+                + laserCloud->points[i + 1].y + laserCloud->points[i + 2].y
+                + laserCloud->points[i + 3].y + laserCloud->points[i + 4].y
+                + laserCloud->points[i + 5].y;
+    float diffZ = laserCloud->points[i - 5].z + laserCloud->points[i - 4].z 
+                + laserCloud->points[i - 3].z + laserCloud->points[i - 2].z 
+                + laserCloud->points[i - 1].z - 10 * laserCloud->points[i].z 
+                + laserCloud->points[i + 1].z + laserCloud->points[i + 2].z
+                + laserCloud->points[i + 3].z + laserCloud->points[i + 4].z
+                + laserCloud->points[i + 5].z;
+    cloudCurvature[i] = diffX * diffX + diffY * diffY + diffZ * diffZ;//记录每个点的曲率
+    cloudSortInd[i] = i;//表示当前点在点云中索引
+    cloudNeighborPicked[i] = 0;//用于标记是否为筛选过的点
+    cloudLabel[i] = 0;//用于标记特征点为边界线还是平面特征点
+    //每个scan，只有第一个符合的点会进来，因为每个scan的点都在一起存放
+    if (int(laserCloud->points[i].intensity) != scanCount) {
+      scanCount = int(laserCloud->points[i].intensity);//控制每个scan只进入第一个点
+      if (scanCount > 0 && scanCount < N_SCANS) {
+        scanStartInd[scanCount] = i + 5;// scan起始位置的索引（去除前5个点）
+        scanEndInd[scanCount - 1] = i - 5;// scan终止位置的索引（去除后5个点）
+      }
+    }
+  } 
+  //第一个scan曲率点有效点序从第5个开始，最后一个激光线结束点序size-5，直接赋值即可
+  scanStartInd[0] = 5;//第一条线的起始位置
+  scanEndInd.back() = cloudSize - 5; //最后一条线的终止位置
+  // 2.挑选点，排除容易被斜面挡住的点以及离群点，有些点容易被斜面挡住，
+  // 而离群点可能出现带有偶然性，这些情况都可能导致前后两次扫描不能被同时看到
+  for (int i = 5; i < cloudSize - 6; i++) {//与后一个点的差值，所以减6
+    float diffX = laserCloud->points[i + 1].x - laserCloud->points[i].x;
+    float diffY = laserCloud->points[i + 1].y - laserCloud->points[i].y;
+    float diffZ = laserCloud->points[i + 1].z - laserCloud->points[i].z;
+    //计算有效曲率点与后一个点之间的距离平方和
+    float diff = diffX * diffX + diffY * diffY + diffZ * diffZ;
+    
+    if (diff > 0.1) {//若两个点之间距离的平方大于0.1，说明这两点存在一定的距离，
+      //计算点的深度信息
+      float depth1 = sqrt(laserCloud->points[i].x * laserCloud->points[i].x + 
+                     laserCloud->points[i].y * laserCloud->points[i].y +
+                     laserCloud->points[i].z * laserCloud->points[i].z);
+
+      float depth2 = sqrt(laserCloud->points[i + 1].x * laserCloud->points[i + 1].x + 
+                     laserCloud->points[i + 1].y * laserCloud->points[i + 1].y +
+                     laserCloud->points[i + 1].z * laserCloud->points[i + 1].z);
+
+      if (depth1 > depth2) {
+        //将较长边（i）按比例收缩到与短边i+1平齐，构成以i,i+1的长度为腰的等腰三角形
+        diffX = laserCloud->points[i + 1].x - laserCloud->points[i].x * depth2 / depth1;
+        diffY = laserCloud->points[i + 1].y - laserCloud->points[i].y * depth2 / depth1;
+        diffZ = laserCloud->points[i + 1].z - laserCloud->points[i].z * depth2 / depth1;
+        //根据 x=sinx（近似）=底/边 ,求得当前激光点与后一点的夹角
+        //实际表示i与i+1夹角小于5.732度 sin(5.732) ~= 0.1 认为被遮挡
+        // 边长比也即是弧度值，若小于0.1，说明夹角比较小，斜面比较陡峭,点深度变化比较剧烈,点处在近似与激光束平行的斜面上
+        //3、排除容易被斜面挡住的点
+        if (sqrt(diffX * diffX + diffY * diffY + diffZ * diffZ) / depth2 < 0.1) {
+          //深度大的点以及前面5个点，全部标记为不是特征点，因为不稳定
+          cloudNeighborPicked[i - 5] = 1;
+          cloudNeighborPicked[i - 4] = 1;
+          cloudNeighborPicked[i - 3] = 1;
+          cloudNeighborPicked[i - 2] = 1;
+          cloudNeighborPicked[i - 1] = 1;
+          cloudNeighborPicked[i] = 1;
+        }
+      } else {//将较长边（i+1）按比例收缩到与短边i平齐，构成以i,i+1的长度为腰的等腰三角形
+        diffX = laserCloud->points[i + 1].x * depth1 / depth2 - laserCloud->points[i].x;
+        diffY = laserCloud->points[i + 1].y * depth1 / depth2 - laserCloud->points[i].y;
+        diffZ = laserCloud->points[i + 1].z * depth1 / depth2 - laserCloud->points[i].z;
+        //深度大的点以及后面5个点，全部标记为不是特征点，因为不稳定
+        if (sqrt(diffX * diffX + diffY * diffY + diffZ * diffZ) / depth1 < 0.1) {
+          cloudNeighborPicked[i + 1] = 1;
+          cloudNeighborPicked[i + 2] = 1;
+          cloudNeighborPicked[i + 3] = 1;
+          cloudNeighborPicked[i + 4] = 1;
+          cloudNeighborPicked[i + 5] = 1;
+          cloudNeighborPicked[i + 6] = 1;
+        }
+      }
+    }
+    //4、排除与激光平行的点
+    //计算当前点与前一点的距离的平方
+    float diffX2 = laserCloud->points[i].x - laserCloud->points[i - 1].x;
+    float diffY2 = laserCloud->points[i].y - laserCloud->points[i - 1].y;
+    float diffZ2 = laserCloud->points[i].z - laserCloud->points[i - 1].z;
+    float diff2 = diffX2 * diffX2 + diffY2 * diffY2 + diffZ2 * diffZ2;
+    //计算当前点的深度（x2+y2+z2）
+    float dis = laserCloud->points[i].x * laserCloud->points[i].x
+              + laserCloud->points[i].y * laserCloud->points[i].y
+              + laserCloud->points[i].z * laserCloud->points[i].z;
+    //如果当前点与前后点距离的平方都>0.0002倍当前点的深度，则当前点入射角与物理表面平行，当前点不可作为特征点
+    if (diff > 0.0002 * dis && diff2 > 0.0002 * dis) {
+      cloudNeighborPicked[i] = 1;
+    }
+  }
+
+//--------------------------5、根据曲率排序、提取边缘点、平面点，进行特征分类----------------------------//
+  pcl::PointCloud<PointType> cornerPointsSharp;//存储每段中曲率较大的两个点
+  pcl::PointCloud<PointType> cornerPointsLessSharp;//存储边缘点
+  pcl::PointCloud<PointType> surfPointsFlat;//用于存储曲率最小的几个点
+  pcl::PointCloud<PointType> surfPointsLessFlat;//存储平面点
+  //首先对于每一层激光点(总16层)，将每层区域分成6份，起始位置为sp，终止位置为ep，然后对曲率从小到大进行排序
+  for (int i = 0; i < N_SCANS; i++) {
+    pcl::PointCloud<PointType>::Ptr surfPointsLessFlatScan(new pcl::PointCloud<PointType>);
+    //每个线分6段，确保周围都有点被选作特征点，sp/ep分别为各段起始和终止位置
+    for (int j = 0; j < 6; j++) {
+      //六等份起点：sp = scanStartInd + (scanEndInd - scanStartInd)*j/6
+      int sp = (scanStartInd[i] * (6 - j)  + scanEndInd[i] * j) / 6;
+      //六等份终点：ep = scanStartInd - 1 + (scanEndInd - scanStartInd)*(j+1)/6
+      int ep = (scanStartInd[i] * (5 - j)  + scanEndInd[i] * (j + 1)) / 6 - 1;
+      //每一段，曲率按照升序排放
+      for (int k = sp + 1; k <= ep; k++) {
+        for (int l = k; l >= sp + 1; l--) {
+          if (cloudCurvature[cloudSortInd[l]] < cloudCurvature[cloudSortInd[l - 1]]) {
+            int temp = cloudSortInd[l - 1];
+            cloudSortInd[l - 1] = cloudSortInd[l];
+            cloudSortInd[l] = temp;
+          }
+        }
+      }
+      //筛选边缘点：每段曲率很大或则比较大的点
+      int largestPickedNum = 0;
+      for (int k = ep; k >= sp; k--) {
+        int ind = cloudSortInd[k];//设定为曲率最大的点序
+        //如果该点序的点没有被标记为不可取特征点且曲率大于阈值
+        if (cloudNeighborPicked[ind] == 0 &&
+            cloudCurvature[ind] > 0.1) {
+        
+          largestPickedNum++;
+          //挑选曲率最大的前2个点放入sharp点集合
+          if (largestPickedNum <= 2) {
+            cloudLabel[ind] = 2;//2代表曲率很大
+            cornerPointsSharp.push_back(laserCloud->points[ind]);//保存sharp点云中 
+            cornerPointsLessSharp.push_back(laserCloud->points[ind]);//同时保存在lessSharp点云中
+          }//挑选曲率再打的前20个点保存在lessSharp点云中（包括前两个标记为2的点） 
+          else if (largestPickedNum <= 20) {
+            cloudLabel[ind] = 1;//后18个lesssharp特征线点标记为1
+            cornerPointsLessSharp.push_back(laserCloud->points[ind]);
+          } else {
+            break;
+          }
+
+          cloudNeighborPicked[ind] = 1;//标记为不可用点
+          //将曲率比较大的点的前后各5个连续距离比较近的点筛选出去，防止特征点聚集，使得特征点在每个方向上尽量分布均匀
+          //对ind点周围的点是否能作为特征点进行判断   除非距离大于阈值，否则前后各五个点不能作为特征点
+          for (int l = 1; l <= 5; l++) {
+            float diffX = laserCloud->points[ind + l].x 
+                        - laserCloud->points[ind + l - 1].x;
+            float diffY = laserCloud->points[ind + l].y 
+                        - laserCloud->points[ind + l - 1].y;
+            float diffZ = laserCloud->points[ind + l].z 
+                        - laserCloud->points[ind + l - 1].z;
+            if (diffX * diffX + diffY * diffY + diffZ * diffZ > 0.05) {
+              break;
+            }
+
+            cloudNeighborPicked[ind + l] = 1;//被标记为不可用点
+          }
+          for (int l = -1; l >= -5; l--) {
+            float diffX = laserCloud->points[ind + l].x 
+                        - laserCloud->points[ind + l + 1].x;
+            float diffY = laserCloud->points[ind + l].y 
+                        - laserCloud->points[ind + l + 1].y;
+            float diffZ = laserCloud->points[ind + l].z 
+                        - laserCloud->points[ind + l + 1].z;
+            if (diffX * diffX + diffY * diffY + diffZ * diffZ > 0.05) {
+              break;
+            }
+
+            cloudNeighborPicked[ind + l] = 1;
+          }
+        }
+      }
+      //平面点：挑选每个分段的曲率很小比较小的点
+      //从每一段曲率最小(前端)开始查找    用于确定平面点
+      int smallestPickedNum = 0;
+      for (int k = sp; k <= ep; k++) {
+        int ind = cloudSortInd[k];
+        //如果没有被标记为不可用特征点，且曲率小于0.1
+        if (cloudNeighborPicked[ind] == 0 &&
+            cloudCurvature[ind] < 0.1) {
+
+          cloudLabel[ind] = -1;//-1代表曲率很小的点
+          surfPointsFlat.push_back(laserCloud->points[ind]);//用于后面补偿所用
+
+          smallestPickedNum++;
+          if (smallestPickedNum >= 4) {////只选最小的四个，剩下的Label==0,就都是曲率比较小的
+            break;
+          }
+
+          cloudNeighborPicked[ind] = 1;
+          for (int l = 1; l <= 5; l++) {//同样防止特征点聚集，判断周围点是否是不可标记点
+            float diffX = laserCloud->points[ind + l].x 
+                        - laserCloud->points[ind + l - 1].x;
+            float diffY = laserCloud->points[ind + l].y 
+                        - laserCloud->points[ind + l - 1].y;
+            float diffZ = laserCloud->points[ind + l].z 
+                        - laserCloud->points[ind + l - 1].z;
+            if (diffX * diffX + diffY * diffY + diffZ * diffZ > 0.05) {
+              break;
+            }
+
+            cloudNeighborPicked[ind + l] = 1;
+          }
+          for (int l = -1; l >= -5; l--) {
+            float diffX = laserCloud->points[ind + l].x 
+                        - laserCloud->points[ind + l + 1].x;
+            float diffY = laserCloud->points[ind + l].y 
+                        - laserCloud->points[ind + l + 1].y;
+            float diffZ = laserCloud->points[ind + l].z 
+                        - laserCloud->points[ind + l + 1].z;
+            if (diffX * diffX + diffY * diffY + diffZ * diffZ > 0.05) {
+              break;
+            }
+
+            cloudNeighborPicked[ind + l] = 1;
+          }
+        }
+      }
+      //除了被标记过的点(本身不能作为特征点以及被标记为边界线的特征点)，其它点都作为lessFlatPoints存储到surfPointsLessFlatScan中
+      for (int k = sp; k <= ep; k++) {
+        if (cloudLabel[k] <= 0) {
+          surfPointsLessFlatScan->push_back(laserCloud->points[k]);
+        }
+      }
+    }
+    //由于less flat点最多，对每个分段less flat的点进行体素栅格滤波
+    pcl::PointCloud<PointType> surfPointsLessFlatScanDS;
+    pcl::VoxelGrid<PointType> downSizeFilter;
+    downSizeFilter.setInputCloud(surfPointsLessFlatScan);
+    downSizeFilter.setLeafSize(0.2, 0.2, 0.2);
+    downSizeFilter.filter(surfPointsLessFlatScanDS);
+    //less flat点汇总
+    surfPointsLessFlat += surfPointsLessFlatScanDS;//存储平面点
+  }
+//------------------------6、将不同的特征点打包成消息发送出去-----------------------------//
+  //publich消除非匀速运动畸变后的所有的点
+  sensor_msgs::PointCloud2 laserCloudOutMsg;
+  pcl::toROSMsg(*laserCloud, laserCloudOutMsg);
+  laserCloudOutMsg.header.stamp = laserCloudMsg->header.stamp;
+  laserCloudOutMsg.header.frame_id = "/camera";
+  pubLaserCloud.publish(laserCloudOutMsg);
+  //publich消除非匀速运动畸变后的边缘点
+  sensor_msgs::PointCloud2 cornerPointsSharpMsg;
+  pcl::toROSMsg(cornerPointsSharp, cornerPointsSharpMsg);
+  cornerPointsSharpMsg.header.stamp = laserCloudMsg->header.stamp;
+  cornerPointsSharpMsg.header.frame_id = "/camera";
+  pubCornerPointsSharp.publish(cornerPointsSharpMsg);
+  
+  sensor_msgs::PointCloud2 cornerPointsLessSharpMsg;
+  pcl::toROSMsg(cornerPointsLessSharp, cornerPointsLessSharpMsg);
+  cornerPointsLessSharpMsg.header.stamp = laserCloudMsg->header.stamp;
+  cornerPointsLessSharpMsg.header.frame_id = "/camera";
+  pubCornerPointsLessSharp.publish(cornerPointsLessSharpMsg);
+  //publich消除非匀速运动畸变后的平面点
+  sensor_msgs::PointCloud2 surfPointsFlat2;
+  pcl::toROSMsg(surfPointsFlat, surfPointsFlat2);
+  surfPointsFlat2.header.stamp = laserCloudMsg->header.stamp;
+  surfPointsFlat2.header.frame_id = "/camera";
+  pubSurfPointsFlat.publish(surfPointsFlat2);
+
+  sensor_msgs::PointCloud2 surfPointsLessFlat2;
+  pcl::toROSMsg(surfPointsLessFlat, surfPointsLessFlat2);
+  surfPointsLessFlat2.header.stamp = laserCloudMsg->header.stamp;
+  surfPointsLessFlat2.header.frame_id = "/camera";
+  pubSurfPointsLessFlat.publish(surfPointsLessFlat2);
+  //publich IMU消息,由于循环到了最后，因此是Cur都是代表最后一个点，即最后一个点的欧拉角，畸变位移及一个点云周期增加的速度
+  pcl::PointCloud<pcl::PointXYZ> imuTrans(4, 1);
+   //起始点欧拉角
+  imuTrans.points[0].x = imuPitchStart;
+  imuTrans.points[0].y = imuYawStart;
+  imuTrans.points[0].z = imuRollStart;
+   //最后一个点的欧拉角
+  imuTrans.points[1].x = imuPitchCur;
+  imuTrans.points[1].y = imuYawCur;
+  imuTrans.points[1].z = imuRollCur;
+  //最后一个点相对于第一个点的畸变位移和速度
+  imuTrans.points[2].x = imuShiftFromStartXCur;
+  imuTrans.points[2].y = imuShiftFromStartYCur;
+  imuTrans.points[2].z = imuShiftFromStartZCur;
+
+  imuTrans.points[3].x = imuVeloFromStartXCur;
+  imuTrans.points[3].y = imuVeloFromStartYCur;
+  imuTrans.points[3].z = imuVeloFromStartZCur;
+
+  sensor_msgs::PointCloud2 imuTransMsg;
+  pcl::toROSMsg(imuTrans, imuTransMsg);
+  imuTransMsg.header.stamp = laserCloudMsg->header.stamp;
+  imuTransMsg.header.frame_id = "/camera";
+  pubImuTrans.publish(imuTransMsg);
+}
+</code></pre>
+<h2 id="2-3-回调函数-imuHandler"><a href="#2-3-回调函数-imuHandler" class="headerlink" title="2.3 回调函数 imuHandler()"></a>2.3 回调函数 imuHandler()</h2><blockquote>
+<p>减去重力对imu的影响，求出xyz轴的加速度实际值，将加速度转换到世界坐标系</p>
+</blockquote>
+<pre class=" language-c++"><code class="language-c++">//IMU回调函数首先读取方向角四元素到orientation，然后转换成欧拉角roll/pitch/yaw
+//减去重力对imu的影响，求出xyz轴的加速度实际值，将加速度转换到世界坐标系
+//接收imu消息，imu坐标系为x轴向前，y轴向右，z轴向上的右手坐标系
+void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)
+{
+  double roll, pitch, yaw;
+  tf::Quaternion orientation;
+  tf::quaternionMsgToTF(imuIn->orientation, orientation);
+  tf::Matrix3x3(orientation).getRPY(roll, pitch, yaw);
+  //统一到z轴向前,x轴向左的右手坐标系
+  //交换过后RPY对应fixed axes ZXY(RPY---ZXY)。Now R = Ry(yaw)*Rx(pitch)*Rz(roll).
+  float accX = imuIn->linear_acceleration.y - sin(roll) * cos(pitch) * 9.81;
+  float accY = imuIn->linear_acceleration.z - cos(roll) * cos(pitch) * 9.81;
+  float accZ = imuIn->linear_acceleration.x + sin(pitch) * 9.81;
+  //imuPointerLast作为imu各个参数数组的索引，循环累加，
+  imuPointerLast = (imuPointerLast + 1) % imuQueLength;
+
+  imuTime[imuPointerLast] = imuIn->header.stamp.toSec();
+  imuRoll[imuPointerLast] = roll;
+  imuPitch[imuPointerLast] = pitch;
+  imuYaw[imuPointerLast] = yaw;
+  imuAccX[imuPointerLast] = accX;
+  imuAccY[imuPointerLast] = accY;
+  imuAccZ[imuPointerLast] = accZ;
+
+  AccumulateIMUShift();
+}
+</code></pre>
+<h2 id="2-4-AccumulateIMUShift"><a href="#2-4-AccumulateIMUShift" class="headerlink" title="2.4 AccumulateIMUShift()"></a>2.4 AccumulateIMUShift()</h2><blockquote>
+<p>进行航距推算，假定为匀速运动推算出当前时刻的位置、速度</p>
+</blockquote>
+<pre class=" language-c++"><code class="language-c++">//积分速度与位移
+void AccumulateIMUShift()
+{
+  float roll = imuRoll[imuPointerLast];
+  float pitch = imuPitch[imuPointerLast];
+  float yaw = imuYaw[imuPointerLast];
+  float accX = imuAccX[imuPointerLast];
+  float accY = imuAccY[imuPointerLast];
+  float accZ = imuAccZ[imuPointerLast];
+
+  // 绕RPY旋转转换得到世界坐标系下的加速度值
+  //绕z轴旋转(roll)
+  float x1 = cos(roll) * accX - sin(roll) * accY;
+  float y1 = sin(roll) * accX + cos(roll) * accY;
+  float z1 = accZ;
+  //绕x轴旋转(pitch)
+  float x2 = x1;
+  float y2 = cos(pitch) * y1 - sin(pitch) * z1;
+  float z2 = sin(pitch) * y1 + cos(pitch) * z1;
+  //绕y轴旋转(yaw)
+  accX = cos(yaw) * x2 + sin(yaw) * z2;
+accY = y2;
+  accZ = -sin(yaw) * x2 + cos(yaw) * z2;
+
+  //上一个imu点
+  int imuPointerBack = (imuPointerLast + imuQueLength - 1) % imuQueLength;
+  //上一个点到当前点所经历的时间，即计算imu测量周期
+  double timeDiff = imuTime[imuPointerLast] - imuTime[imuPointerBack];
+
+
+  //求每个imu时间点的位移Shift与速度Velo,两点之间视为匀加速直线运动
+  //要求imu的频率至少比lidar高，这样的imu信息才使用，后面校正也才有意义
+  if (timeDiff < scanPeriod) {//（隐含从静止开始运动）
+imuShiftX[imuPointerLast] = imuShiftX[imuPointerBack] + imuVeloX[imuPointerBack] * timeDiff 
+                              + accX * timeDiff * timeDiff / 2;
+    imuShiftY[imuPointerLast] = imuShiftY[imuPointerBack] + imuVeloY[imuPointerBack] * timeDiff 
+                              + accY * timeDiff * timeDiff / 2;
+    imuShiftZ[imuPointerLast] = imuShiftZ[imuPointerBack] + imuVeloZ[imuPointerBack] * timeDiff 
+                              + accZ * timeDiff * timeDiff / 2;
+
+    imuVeloX[imuPointerLast] = imuVeloX[imuPointerBack] + accX * timeDiff;
+    imuVeloY[imuPointerLast] = imuVeloY[imuPointerBack] + accY * timeDiff;
+    imuVeloZ[imuPointerLast] = imuVeloZ[imuPointerBack] + accZ * timeDiff;
+  }
+}
+</code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">xuyanbo</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://x-bruce1573.github.io/2022/01/07/loam-yuan-ma-jie-xi-1-yi-scanregistration/">https://x-bruce1573.github.io/2022/01/07/loam-yuan-ma-jie-xi-1-yi-scanregistration/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">xuyanbo</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
+                                </a>
+                            
+                                <a href="/tags/LOAM/">
+                                    <span class="chip bg-color">LOAM</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/01/07/loam-yuan-ma-jie-xi-1-yi-scanregistration/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="LOAM源码解析1一scanRegistration">
+                        
+                        <span class="card-title">LOAM源码解析1一scanRegistration</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SLAM/" class="post-category">
+                                    SLAM
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                    <a href="/tags/LOAM/">
+                        <span class="chip bg-color">LOAM</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/10/19/xu-ni-ji-jie-shou-bu-dao-lei-da-shu-ju-jie-jue-fang-an/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/33.jpg" class="responsive-img" alt="虚拟机接收不到雷达数据解决方案">
+                        
+                        <span class="card-title">虚拟机接收不到雷达数据解决方案</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            xuyanbo
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: XuYanBo<br />'
+            + '文章作者: xuyanbo<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">xuyanbo</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">13.9k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/X-bruce1573" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1031676968@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1031676968" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1031676968" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
