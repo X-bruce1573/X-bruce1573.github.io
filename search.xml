@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>基于ICP的点云融合拼接</title>
+      <link href="2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/"/>
+      <url>2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/</url>
+      
+        <content type="html"><![CDATA[<h1 id="基于ICP的点云融合拼接"><a href="#基于ICP的点云融合拼接" class="headerlink" title="基于ICP的点云融合拼接"></a>基于ICP的点云融合拼接</h1><blockquote><p>实际应用中基于单个雷达扫描的局限性（遮挡，特征信息不全问题），我们需要将不同坐标系下的点云进行拼接融合，以最大程度上还原真实场景</p></blockquote><h2 id="一、ICP"><a href="#一、ICP" class="headerlink" title="一、ICP"></a>一、ICP</h2><p>​       ICP即迭代最近点算法，通过不断调整，把不同角度的3D点数据整合到一个完整的模型中。它的目的在于在一个全局坐标系下找到不同视角的定位与定向，两个视角交叉部分重叠完好为最优，给定输入数据集，首先做一个估计，然后通过旋转和平移变换一个数据集，找到一个正确的点集对应方式完美匹配</p><h2 id="二、PCD文件读取与可视化"><a href="#二、PCD文件读取与可视化" class="headerlink" title="二、PCD文件读取与可视化"></a>二、PCD文件读取与可视化</h2><p><strong>数据集源自于通过RSview保存的两个不同坐标系下的Pcap文件，通过RSlidar雷达驱动编译运行转化为了Pcd文件，其可视化如下图</strong></p><img src="/2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/1.png" class=""><p>​                                                     测顶雷达</p><img src="/2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/2.png" class=""><p>​                                                                测边雷达</p><h2 id="三、滤除异常点"><a href="#三、滤除异常点" class="headerlink" title="三、滤除异常点"></a>三、滤除异常点</h2><p><strong>数据显示如下</strong>：</p><img src="/2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/3.png" class=""><p>由上图可知，PCD点云数据中存在nan异常点，对于融合拼接效果有影响，因此我们需要去除异常点</p><img src="/2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/4.png" class=""><p>由上图可知，异常点过滤成功！！！</p><h2 id="四、点云拼接融合"><a href="#四、点云拼接融合" class="headerlink" title="四、点云拼接融合"></a>四、点云拼接融合</h2><p>结果如下图：</p><img src="/2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/5.png" class=""><p>拼接融合效果良好！！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> ICP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PCL </tag>
+            
+            <tag> 点云拼接 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LOAM源码解析1一scanRegistration</title>
       <link href="2022/01/07/loam-yuan-ma-jie-xi-1-yi-scanregistration/"/>
       <url>2022/01/07/loam-yuan-ma-jie-xi-1-yi-scanregistration/</url>

@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="基于虚拟机的Ubuntu网络连接解决方案, xuyanbo,github">
+    <meta name="keywords" content="基于ICP的点云融合拼接, xuyanbo,github">
     <meta name="description" content="举个栗子">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>基于虚拟机的Ubuntu网络连接解决方案 | XuYanBo</title>
+    <title>基于ICP的点云融合拼接 | XuYanBo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -312,12 +312,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">基于虚拟机的Ubuntu网络连接解决方案</h1>
+                    <h1 class="description center-align post-title">基于ICP的点云融合拼接</h1>
                 </div>
             </div>
         </div>
@@ -433,12 +433,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Ubuntu/">
-                                <span class="chip bg-color">Ubuntu</span>
+                            <a href="/tags/PCL/">
+                                <span class="chip bg-color">PCL</span>
                             </a>
                         
-                            <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">
-                                <span class="chip bg-color">虚拟机</span>
+                            <a href="/tags/%E7%82%B9%E4%BA%91%E6%8B%BC%E6%8E%A5/">
+                                <span class="chip bg-color">点云拼接</span>
                             </a>
                         
                     </div>
@@ -449,8 +449,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-category">
-                                解决方案
+                            <a href="/categories/ICP/" class="post-category">
+                                ICP
                             </a>
                         
                     </div>
@@ -462,7 +462,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-01
+                    2022-01-07
                 </div>
                 
 
@@ -471,7 +471,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    279
+                    342
                 </div>
                 
 
@@ -498,39 +498,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>今天准备使用虚拟机，突然发现连不上网了<span class="github-emoji"><span>🙉</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f649.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，之前天真的以为是自动连接的<span class="github-emoji"><span>😕</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f615.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，Ubuntu界面上的wify标志也没了，今天还有资源包需要安装使用，不由的一阵头皮发麻，后来在网上找了好多方法，最终才把它弄好<span class="github-emoji"><span>🙏</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f64f.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，小问题耽搁了不少时间，鉴于此记录下解决方案，供粗心的路人少踩坑<span class="github-emoji"><span>🆘</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f198.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+                <h1 id="基于ICP的点云融合拼接"><a href="#基于ICP的点云融合拼接" class="headerlink" title="基于ICP的点云融合拼接"></a>基于ICP的点云融合拼接</h1><blockquote>
+<p>实际应用中基于单个雷达扫描的局限性（遮挡，特征信息不全问题），我们需要将不同坐标系下的点云进行拼接融合，以最大程度上还原真实场景</p>
 </blockquote>
-<p>首先，点击下面这个编辑选项</p>
-<img src="/2021/06/01/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/1.png" class="">
+<h2 id="一、ICP"><a href="#一、ICP" class="headerlink" title="一、ICP"></a>一、ICP</h2><p>​       ICP即迭代最近点算法，通过不断调整，把不同角度的3D点数据整合到一个完整的模型中。它的目的在于在一个全局坐标系下找到不同视角的定位与定向，两个视角交叉部分重叠完好为最优，给定输入数据集，首先做一个估计，然后通过旋转和平移变换一个数据集，找到一个正确的点集对应方式完美匹配</p>
+<h2 id="二、PCD文件读取与可视化"><a href="#二、PCD文件读取与可视化" class="headerlink" title="二、PCD文件读取与可视化"></a>二、PCD文件读取与可视化</h2><p><strong>数据集源自于通过RSview保存的两个不同坐标系下的Pcap文件，通过RSlidar雷达驱动编译运行转化为了Pcd文件，其可视化如下图</strong></p>
+<img src="/2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/1.png" class="">
 
-<p>选择虚拟网络编辑器，选择桥接模式，并且选择带有<code>Wireless-AC</code>的（如果是用Wifi的话）。</p>
-<img src="/2021/06/01/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/2.png" class="">
+<p>​                                                     测顶雷达</p>
+<img src="/2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/2.png" class="">
 
-<p>然后打开自己电脑的网络连接</p>
-<img src="/2021/06/01/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/3.png" class="">
+<p>​                                                                测边雷达</p>
+<h2 id="三、滤除异常点"><a href="#三、滤除异常点" class="headerlink" title="三、滤除异常点"></a>三、滤除异常点</h2><p><strong>数据显示如下</strong>：</p>
+<img src="/2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/3.png" class="">
 
-<p>找到带有VMware字样的（我改了第一个就成功了）</p>
-<img src="/2021/06/01/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/4.png" class="">
+<p>由上图可知，PCD点云数据中存在nan异常点，对于融合拼接效果有影响，因此我们需要去除异常点</p>
+<img src="/2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/4.png" class="">
 
-<p>右击属性，选择设置</p>
-<img src="/2021/06/01/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/5.png" class="">
+<p>由上图可知，异常点过滤成功！！！</p>
+<h2 id="四、点云拼接融合"><a href="#四、点云拼接融合" class="headerlink" title="四、点云拼接融合"></a>四、点云拼接融合</h2><p>结果如下图：</p>
+<img src="/2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/5.png" class="">
 
-<p>选择自动获取ip地址</p>
-<img src="/2021/06/01/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/6.png" class="">
-
-<p>打开虚拟机，更改为net模式</p>
-<img src="/2021/06/01/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/7.png" class="">
-
-<p>==如果wify图表消失的话，可以按下列操作==</p>
-<pre class=" language-c++"><code class="language-c++">sudo service network-manager stop
-sudo rm /var/lib/NetworkManager/NetworkManager.state
-sudo service network-manager start
-</code></pre>
-<p>再将网络适配器改成桥接模式或者NAT模式再输入</p>
-<p><code>sudo service network-manager start</code></p>
-<p>之后就连上网络啦！！！</p>
-<img src="/2021/06/01/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/8.png" class="">
+<p>拼接融合效果良好！！！</p>
 
                 
             </div>
@@ -557,7 +546,7 @@ sudo service network-manager start
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://x-bruce1573.github.io/2021/06/01/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/">https://x-bruce1573.github.io/2021/06/01/ubuntu-xu-ni-ji-de-wang-luo-lian-jie-jie-jue-fang-an/</a>
+                    <a href="https://x-bruce1573.github.io/2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/">https://x-bruce1573.github.io/2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -595,12 +584,12 @@ sudo service network-manager start
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Ubuntu/">
-                                    <span class="chip bg-color">Ubuntu</span>
+                                <a href="/tags/PCL/">
+                                    <span class="chip bg-color">PCL</span>
                                 </a>
                             
-                                <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">
-                                    <span class="chip bg-color">虚拟机</span>
+                                <a href="/tags/%E7%82%B9%E4%BA%91%E6%8B%BC%E6%8E%A5/">
+                                    <span class="chip bg-color">点云拼接</span>
                                 </a>
                             
                         </div>
@@ -772,17 +761,18 @@ sudo service network-manager start
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/06/25/c-xue-xi-2-0-he-xin-bian-cheng/">
+                <a href="/2022/01/07/ji-yu-icp-de-dian-yun-rong-he-pin-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="菜鸟程序员内功心法--C++（核心编程）">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="基于ICP的点云融合拼接">
                         
-                        <span class="card-title">菜鸟程序员内功心法--C++（核心编程）</span>
+                        <span class="card-title">基于ICP的点云融合拼接</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -792,30 +782,31 @@ sudo service network-manager start
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    编程语言
+                            <a href="/categories/ICP/" class="post-category">
+                                    ICP
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
+                    <a href="/tags/PCL/">
+                        <span class="chip bg-color">PCL</span>
                     </a>
                     
-                    <a href="/tags/markdown/">
-                        <span class="chip bg-color">markdown</span>
+                    <a href="/tags/%E7%82%B9%E4%BA%91%E6%8B%BC%E6%8E%A5/">
+                        <span class="chip bg-color">点云拼接</span>
                     </a>
                     
                 </div>
@@ -829,13 +820,13 @@ sudo service network-manager start
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/01/yong-ultraiso-zhi-zuo-ubuntu-18-04u-pan-qi-dong-pan/">
+                <a href="/2022/01/07/loam-yuan-ma-jie-xi-1-yi-scanregistration/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/28.jpg" class="responsive-img" alt="用UltraISO制作Ubuntu_18.04U盘启动盘">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="LOAM源码解析1一scanRegistration">
                         
-                        <span class="card-title">用UltraISO制作Ubuntu_18.04U盘启动盘</span>
+                        <span class="card-title">LOAM源码解析1一scanRegistration</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -846,14 +837,14 @@ sudo service network-manager start
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                            <a href="/categories/SLAM/" class="post-category">
+                                    SLAM
                                 </a>
                             
                             
@@ -863,12 +854,12 @@ sudo service network-manager start
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Ubuntu-18-04/">
-                        <span class="chip bg-color">Ubuntu_18.04</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
                     </a>
                     
-                    <a href="/tags/UltraISO/">
-                        <span class="chip bg-color">UltraISO</span>
+                    <a href="/tags/LOAM/">
+                        <span class="chip bg-color">LOAM</span>
                     </a>
                     
                 </div>
